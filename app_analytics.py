@@ -11,20 +11,9 @@ client = KeenClient(
     read_key=open("read_key.txt", 'r').read()
 )
 
-
-def end_day():
-    day = int(input("What day would you like the query to end?"))
-    return day
-
-
-def end_month():
-    month = int(input("What month would you like the query to end?"))
-    return month
-
-
-def end_year():
-    year = int(input("What year would you like the query to end?"))
-    return year
+end_month = int(input("What month would you like the query to end?"))
+end_day = int(input("What day would you like the query to end?"))
+end_year = int(input("What year would you like the query to end?"))
 
 
 def daily_query_start(day, month, year):
@@ -32,6 +21,12 @@ def daily_query_start(day, month, year):
     query = {'end': str(dt.datetime(year, month, day).date()), 'start': str(start_day.date())}
     return query
 
+
+def monthly_query_start(month, day, year):
+    start_day = dt.datetime(year, month, day) - dt.timedelta(60)
+    end_day = dt.datetime(year, month, day) - dt.timedelta(30)
+    query = {'end': str(end_day), 'start':str(start_day)}
+    print(query)
 
 
 def extract_date(raw_data):
@@ -41,7 +36,7 @@ def extract_date(raw_data):
         get_first_column = raw_data[x]
         get_first_time = get_first_column['timeframe']
         get_first_column['Date'] = get_first_column.pop('timeframe')
-        get_first_column['Date'] = dt.datetime.strptime(get_first_time['end'],'%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m/%d/%y')
+        get_first_column['Date'] = dt.datetime.strptime(get_first_time['end'],'%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m/%d/%Y')
         x += 1
 
 
@@ -55,9 +50,21 @@ def app_data_daily(month, day, year):
     if temp_df.empty:
         temp_df = pd.DataFrame(app_data)
     else:
+        app_data = pd.DataFrame(app_data)
         temp_df = temp_df.join(app_data)
 
     temp_df.set_index('Date',inplace=True)
     print(temp_df)
 
-app_data_daily(end_month(), end_day(), end_year())
+
+def app_data_monthly(month, day, year):
+    temp_df = pd.DataFrame
+    app_data = client.count_unique('Page', 'user.pk',
+                                   timeframe=monthly_query_start(day, month, year),
+                                   timezone=5,
+                                   interval='yearly')
+    extract_date(app_data)
+
+
+# app_data_daily(end_month, end_day, end_year)
+monthly_query_start(end_month, end_day, end_year)
