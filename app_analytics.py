@@ -14,6 +14,7 @@ client = KeenClient(
 end_month = int(input("What month would you like the query to end?"))
 end_day = int(input("What day would you like the query to end?"))
 end_year = int(input("What year would you like the query to end?"))
+query_size = int(input("How many days do you want in this query?"))
 
 
 def daily_query_start(day, month, year):
@@ -58,19 +59,24 @@ def app_data_daily(month, day, year):
 
 
 def app_data_monthly(month, day, year):
+    x = 0
+    day1 = day
     temp_df = pd.DataFrame
-    app_data = client.count_unique('Page', 'user.pk',
-                                   timeframe=monthly_query_start(day, month, year),
-                                   timezone=5,
-                                   interval='yearly')
-    extract_date(app_data)
-    if temp_df.empty:
-        temp_df = pd.DataFrame(app_data)
-    else:
-        app_data = pd.DataFrame(app_data)
-        temp_df = temp_df.join(app_data)
+    while x < query_size:
+        app_data = client.count_unique('Page', 'user.pk',
+                                       timeframe=monthly_query_start(day1, month, year),
+                                       timezone=5,
+                                       interval='yearly')
+        extract_date(app_data)
+        df = pd.DataFrame(app_data)
+        # df.set_index('Date',inplace=True)
+        if temp_df.empty:
+            temp_df = df
+        else:
+            temp_df = pd.merge(temp_df, df, on='Date')
+        x += 1
+        day1 = int((dt.datetime(year, month, day1) + dt.timedelta(1)).strftime('%d'))
 
-    temp_df.set_index('Date',inplace=True)
     print(temp_df)
 
 # app_data_daily(end_month, end_day, end_year)
