@@ -22,11 +22,18 @@ def daily_query_start(day, month, year):
     return query
 
 
+<<<<<<< Updated upstream
 def monthly_query_start(month, day, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(60)
     end_day = dt.datetime(year, month, day) - dt.timedelta(30)
     query = {'end': str(end_day), 'start':str(start_day)}
     print(query)
+=======
+def monthly_query_start(day, month, year):
+    start_day = dt.datetime(year, month, day) - dt.timedelta(30)
+    query = {'end': str(dt.datetime(year, month, day).date()), 'start': str(start_day.date())}
+    return query
+>>>>>>> Stashed changes
 
 
 def extract_date(raw_data):
@@ -58,6 +65,7 @@ def app_data_daily(month, day, year):
 
 
 def app_data_monthly(month, day, year):
+<<<<<<< Updated upstream
     temp_df = pd.DataFrame
     app_data = client.count_unique('Page', 'user.pk',
                                    timeframe=monthly_query_start(day, month, year),
@@ -68,3 +76,20 @@ def app_data_monthly(month, day, year):
 
 # app_data_daily(end_month, end_day, end_year)
 monthly_query_start(end_month, end_day, end_year)
+=======
+    temp_df = pd.DataFrame()
+    app_data = client.count_unique('Page', 'user.pk',
+                                   timeframe=monthly_query_start(day, month, year),
+                                   timezone=5,
+                                   interval='daily')
+    extract_date(app_data)
+    if temp_df.empty:
+        temp_df = pd.DataFrame(app_data)
+    else:
+        temp_df = temp_df.join(app_data)
+
+    temp_df.set_index('Date',inplace=True)
+    print(temp_df)
+
+app_data_daily(end_month, end_day, end_year)
+>>>>>>> Stashed changes
