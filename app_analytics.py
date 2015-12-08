@@ -22,11 +22,11 @@ def daily_query_start(day, month, year):
     return query
 
 
-def monthly_query_start(month, day, year):
+def monthly_query_start(day, month, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(60)
     end_day = dt.datetime(year, month, day) - dt.timedelta(30)
     query = {'end': str(end_day), 'start':str(start_day)}
-    print(query)
+    return query
 
 
 def extract_date(raw_data):
@@ -64,7 +64,14 @@ def app_data_monthly(month, day, year):
                                    timezone=5,
                                    interval='yearly')
     extract_date(app_data)
+    if temp_df.empty:
+        temp_df = pd.DataFrame(app_data)
+    else:
+        app_data = pd.DataFrame(app_data)
+        temp_df = temp_df.join(app_data)
 
+    temp_df.set_index('Date',inplace=True)
+    print(temp_df)
 
 # app_data_daily(end_month, end_day, end_year)
-monthly_query_start(end_month, end_day, end_year)
+app_data_monthly(day=end_day, month=end_month, year=end_year)
