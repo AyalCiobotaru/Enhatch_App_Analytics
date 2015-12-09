@@ -24,9 +24,9 @@ def daily_query_start(day, month, year):
 
 
 def monthly_query_start(day, month, year):
-    start_day = dt.datetime(year, month, day) - dt.timedelta(60)
-    end_day = dt.datetime(year, month, day) - dt.timedelta(30)
-    query = {'end': str(end_day), 'start':str(start_day)}
+    monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(60)
+    monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(30)
+    query = {'end': str(monthly_end_day), 'start': str(monthly_start_day)}
     return query
 
 
@@ -37,7 +37,8 @@ def extract_date(raw_data):
         get_first_column = raw_data[x]
         get_first_time = get_first_column['timeframe']
         get_first_column['Date'] = get_first_column.pop('timeframe')
-        get_first_column['Date'] = dt.datetime.strptime(get_first_time['end'],'%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m/%d/%Y')
+        get_first_column['Date'] = dt.datetime.strptime(get_first_time['end'],
+                                                        '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m/%d/%Y')
         x += 1
 
 
@@ -54,7 +55,7 @@ def app_data_daily(month, day, year):
         app_data = pd.DataFrame(app_data)
         temp_df = temp_df.join(app_data)
 
-    temp_df.set_index('Date',inplace=True)
+    temp_df.set_index('Date', inplace=True)
     print(temp_df)
 
 
@@ -73,7 +74,7 @@ def app_data_monthly(month, day, year):
         if temp_df.empty:
             temp_df = df
         else:
-            temp_df = pd.merge(temp_df, df, on='Date')
+            temp_df = temp_df.merge(df, how='outer')
         x += 1
         day1 = int((dt.datetime(year, month, day1) + dt.timedelta(1)).strftime('%d'))
 
