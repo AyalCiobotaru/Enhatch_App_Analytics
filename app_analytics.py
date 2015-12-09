@@ -18,19 +18,31 @@ query_size = int(input("How many days do you want in this query?"))
 
 
 def daily_query_start(day, month, year):
-    start_day = dt.datetime(year, month, day) - dt.timedelta(30)
-    query = {'end': str(dt.datetime(year, month, day).date()), 'start': str(start_day.date())}
+    start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
+    query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
     return query
 
 
 def monthly_query_start(day, month, year):
-    monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(60)
-    monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(30)
+    monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size+30)
+    monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
     query = {'end': str(monthly_end_day), 'start': str(monthly_start_day)}
     return query
 
 
-def extract_date(raw_data):
+def extract_date_daily(raw_data):
+    x = 0
+    while x < len(raw_data):
+
+        get_first_column = raw_data[x]
+        get_first_time = get_first_column['timeframe']
+        get_first_column['Date'] = get_first_column.pop('timeframe')
+        get_first_column['Date'] = dt.datetime.strptime(get_first_time['start'],
+                                                        '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m-%d-%Y')
+        x += 1
+
+
+def extract_date_monthly(raw_data):
     x = 0
     while x < len(raw_data):
 
@@ -38,7 +50,7 @@ def extract_date(raw_data):
         get_first_time = get_first_column['timeframe']
         get_first_column['Date'] = get_first_column.pop('timeframe')
         get_first_column['Date'] = dt.datetime.strptime(get_first_time['end'],
-                                                        '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m/%d/%Y')
+                                                        '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%m-%d-%Y')
         x += 1
 
 
@@ -48,7 +60,7 @@ def app_data_daily(month, day, year):
                                    timeframe=daily_query_start(day, month, year),
                                    timezone=5,
                                    interval='daily')
-    extract_date(app_data)
+    extract_date_daily(app_data)
     if temp_df.empty:
         temp_df = pd.DataFrame(app_data)
     else:
@@ -56,7 +68,9 @@ def app_data_daily(month, day, year):
         temp_df = temp_df.join(app_data)
 
     temp_df.set_index('Date', inplace=True)
-    print(temp_df)
+    temp_df.rename(columns={'value': 'DAU'}, inplace=True)
+    temp_df.to_pickle('DAU.pickle')
+    print(temp_df.head())
 
 
 def app_data_monthly(month, day, year):
@@ -68,17 +82,25 @@ def app_data_monthly(month, day, year):
                                        timeframe=monthly_query_start(day1, month, year),
                                        timezone=5,
                                        interval='yearly')
-        extract_date(app_data)
+        extract_date_monthly(app_data)
         df = pd.DataFrame(app_data)
-        # df.set_index('Date',inplace=True)
+
         if temp_df.empty:
             temp_df = df
         else:
             temp_df = temp_df.merge(df, how='outer')
         x += 1
         day1 = int((dt.datetime(year, month, day1) + dt.timedelta(1)).strftime('%d'))
+    temp_df.set_index('Date', inplace=True)
+    temp_df.rename(columns={'value': 'MAU'}, inplace=True)
+    temp_df.to_pickle('MAU.pickle')
+    print(temp_df.head())
 
-    print(temp_df)
-
-# app_data_daily(end_month, end_day, end_year)
+app_data_daily(month=end_month, day=end_day, year=end_year)
 app_data_monthly(day=end_day, month=end_month, year=end_year)
+
+mau_df = pd.read_pickle('MAU.pickle')
+dau_df = pd.read_pickle('DAU.pickle')
+mau_dau_df = dau_df.join(mau_df)
+mau_dau_df.to_pickle('MAU-DAU.pickle')
+print(mau_dau_df)
