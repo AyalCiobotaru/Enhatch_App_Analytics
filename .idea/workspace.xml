@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df427cee-adcd-4bee-8e53-ea205f6d80e2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_analytics.py" afterPath="$PROJECT_DIR$/app_analytics.py" />
     </list>
     <ignored path="Enhatch_App_Analytics.iws" />
@@ -26,10 +27,14 @@
       <file leaf-file-name="app_analytics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15644172">
-              <caret line="40" column="97" selection-start-line="40" selection-start-column="97" selection-end-line="40" selection-end-column="97" />
+            <state vertical-scroll-proportion="0.9160063">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#952#1204#0" expanded="false" />
+                <element signature="e#1245#1641#0" expanded="false" />
+                <element signature="e#1684#2078#0" expanded="false" />
+                <element signature="e#2785#3574#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -59,10 +64,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-1088" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="y" value="-1080" />
+    <option name="width" value="960" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -105,7 +109,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -126,6 +129,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -295,19 +299,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1088" width="1936" height="1096" extended-state="6" />
+    <frame x="0" y="-1080" width="960" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0859375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17478813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31104356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32131824" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39918947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39209726" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -330,11 +334,12 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="app_data" language="Python" />
+        <watch expression="subtraction" language="Python" />
+        <watch expression="df" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -345,6 +350,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#952#1204#0" expanded="false" />
+            <element signature="e#1245#1641#0" expanded="false" />
+            <element signature="e#1684#2078#0" expanded="false" />
+            <element signature="e#2785#3574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -355,6 +364,24 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#952#1204#0" expanded="false" />
+            <element signature="e#1245#1641#0" expanded="false" />
+            <element signature="e#1684#2078#0" expanded="false" />
+            <element signature="e#2785#3574#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_analytics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#952#1204#0" expanded="false" />
+            <element signature="e#1245#1641#0" expanded="false" />
+            <element signature="e#1684#2078#0" expanded="false" />
+            <element signature="e#2785#3574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -365,6 +392,10 @@
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#952#1204#0" expanded="false" />
+            <element signature="e#1245#1641#0" expanded="false" />
+            <element signature="e#1684#2078#0" expanded="false" />
+            <element signature="e#2785#3574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -410,6 +441,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#952#1204#0" expanded="false" />
+            <element signature="e#1245#1641#0" expanded="false" />
+            <element signature="e#1684#2078#0" expanded="false" />
+            <element signature="e#2785#3574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -514,10 +549,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15644172">
-          <caret line="40" column="97" selection-start-line="40" selection-start-column="97" selection-end-line="40" selection-end-column="97" />
+        <state vertical-scroll-proportion="0.9160063">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#952#1204#0" expanded="false" />
+            <element signature="e#1245#1641#0" expanded="false" />
+            <element signature="e#1684#2078#0" expanded="false" />
+            <element signature="e#2785#3574#0" expanded="false" />
           </folding>
         </state>
       </provider>

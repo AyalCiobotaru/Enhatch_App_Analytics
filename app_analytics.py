@@ -2,7 +2,10 @@ import pandas as pd
 import pandas_datareader.io as web
 import keen
 from keen.client import KeenClient
+import plotly.plotly as py
+import cufflinks as cl
 import datetime as dt
+
 
 client = KeenClient(
     project_id=open("project_id.txt", 'r').read(),
@@ -103,4 +106,11 @@ mau_df = pd.read_pickle('MAU.pickle')
 dau_df = pd.read_pickle('DAU.pickle')
 mau_dau_df = dau_df.join(mau_df)
 mau_dau_df.to_pickle('MAU-DAU.pickle')
-print(mau_dau_df)
+
+division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+df = pd.DataFrame(division)
+df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+main_df = mau_dau_df.join(df)
+
+df.iplot(kind='scatter', filename='cufflinks/cf-simple-line')
+print(df)
