@@ -1,3 +1,3 @@
 # Enhatch_App_Analytics
 
-App to generate app analytics
+Code to generate app analytics
