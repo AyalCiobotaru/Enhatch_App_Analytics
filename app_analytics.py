@@ -14,9 +14,9 @@ client = KeenClient(
     read_key=open("read_key.txt", 'r').read()
 )
 
-end_month = int(input("What month would you like the query to end?"))
-end_day = int(input("What day would you like the query to end?"))
-end_year = int(input("What year would you like the query to end?"))
+# end_month = int(input("What month would you like the query to end?"))
+# end_day = int(input("What day would you like the query to end?"))
+# end_year = int(input("What year would you like the query to end?"))
 query_size = int(input("How many days do you want in this query?"))
 
 
@@ -79,38 +79,44 @@ def app_data_daily(month, day, year):
 def app_data_monthly(month, day, year):
     x = 0
     day1 = day
+    month1 = month
+    year1 = year
     temp_df = pd.DataFrame
     while x < query_size:
         app_data = client.count_unique('Page', 'user.pk',
-                                       timeframe=monthly_query_start(day1, month, year),
-                                       timezone=5,
-                                       interval='yearly')
-        extract_date_monthly(app_data)
-        df = pd.DataFrame(app_data)
+                                       timeframe=monthly_query_start(day1, month1, year1),
+                                       timezone=5)
+        # extract_date_monthly(app_data)
+        list_dict = [{'Date': str((dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1))),
+                      'value': str(app_data)}]
+        df = pd.DataFrame(list_dict)
 
         if temp_df.empty:
             temp_df = df
         else:
             temp_df = temp_df.merge(df, how='outer')
         x += 1
-        day1 = int((dt.datetime(year, month, day1) + dt.timedelta(1)).strftime('%d'))
+        new_date = (dt.datetime(year1, month1, day1) + dt.timedelta(1))
+        day1 = int(new_date.strftime('%d'))
+        month1 = int(new_date.strftime('%m'))
+        year1 = int(new_date.strftime('%Y'))
+        if x == 30:
+            print('hi')
     temp_df.set_index('Date', inplace=True)
     temp_df.rename(columns={'value': 'MAU'}, inplace=True)
     temp_df.to_pickle('MAU.pickle')
     print(temp_df.head())
 
-app_data_daily(month=end_month, day=end_day, year=end_year)
-app_data_monthly(day=end_day, month=end_month, year=end_year)
-
+# app_data_daily(month=end_month, day=end_day, year=end_year)
+app_data_monthly(day=1, month=12, year=2015)
 mau_df = pd.read_pickle('MAU.pickle')
-dau_df = pd.read_pickle('DAU.pickle')
-mau_dau_df = dau_df.join(mau_df)
-mau_dau_df.to_pickle('MAU-DAU.pickle')
-
-division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
-df = pd.DataFrame(division)
-df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
-main_df = mau_dau_df.join(df)
-
-df.iplot(kind='scatter', filename='cufflinks/cf-simple-line')
-print(df)
+# dau_df = pd.read_pickle('DAU.pickle')
+# mau_dau_df = dau_df.join(mau_df)
+# mau_dau_df.to_pickle('MAU-DAU.pickle')
+# division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+# df = pd.DataFrame(division)
+# df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+# main_df = mau_dau_df.join(df)
+#
+# df.iplot(kind='scatter', filename='cufflinks/cf-simple-line')
+print(mau_df)
