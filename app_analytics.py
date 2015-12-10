@@ -61,7 +61,7 @@ def end_date_query():
 def daily_query_start(day, month, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
     query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
-    #query = [{'end': '11/27/2015', 'start': '11/23/2015'}, {'end': '11/20/2015', 'start': '11/16/2015'}]
+    # query = [{'end': '11/27/2015', 'start': '11/23/2015'}, {'end': '11/20/2015', 'start': '11/16/2015'}]
     return query
 
 
@@ -97,22 +97,27 @@ def extract_date_monthly(raw_data):
 
 
 def app_data_daily(month, day, year):
+    start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
+    num_weeks = query_size / 7
+    query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
+    query = [{'end': '11/21/2015', 'start': '11/16/2015'}, {'end': '11/28/2015', 'start': '11/23/2015'}]
     temp_df = pd.DataFrame()
-    app_data = client.count_unique('Page', 'user.pk',
-                                   timeframe=daily_query_start(day, month, year),
-                                   timezone=5,
-                                   interval='daily')
-    extract_date_daily(app_data)
-    if temp_df.empty:
-        temp_df = pd.DataFrame(app_data)
-    else:
-        app_data = pd.DataFrame(app_data)
-        temp_df = temp_df.join(app_data)
+    for item in query:
+        app_data = client.count_unique('Page', 'user.pk',
+                                       timeframe=item,
+                                       timezone=5,
+                                       interval='daily')
+        extract_date_daily(app_data)
+        df = pd.DataFrame(app_data)
+        if temp_df.empty:
+            temp_df = pd.DataFrame(app_data)
+        else:
+            temp_df = temp_df.merge(df, how='outer')
 
     temp_df.set_index('Date', inplace=True)
     temp_df.rename(columns={'value': 'DAU'}, inplace=True)
     temp_df.to_pickle('DAU.pickle')
-    print(temp_df.head())
+    print(temp_df)
 
 
 def app_data_monthly(month, day, year):
