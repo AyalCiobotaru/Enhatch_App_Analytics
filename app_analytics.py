@@ -5,6 +5,7 @@ from keen.client import KeenClient
 import plotly.plotly as py
 import cufflinks as cl
 import datetime as dt
+from math import ceil
 
 
 client = KeenClient(
@@ -98,10 +99,40 @@ def extract_date_monthly(raw_data):
 
 def app_data_daily(month, day, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
-    num_weeks = query_size / 7
-    query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
-    query = [{'end': '11/21/2015', 'start': '11/16/2015'}, {'end': '11/28/2015', 'start': '11/23/2015'}]
-    temp_df = pd.DataFrame()
+    num_weeks = ceil(query_size / 7)
+    day_of_week = start_day.weekday()
+    if day_of_week == 5:
+        day_of_week = start_day + dt.timedelta(2)
+    elif day_of_week == 6:
+        day_of_week = start_day + dt.timedelta(1)
+    else:
+        day_of_week = start_day
+    query = []
+    for x in range(num_weeks, 0, -1):
+        next_day1 = day_of_week + dt.timedelta(1)
+        if next_day1.weekday() == 5:
+            query_part = {'end': str(next_day1), 'start': str(day_of_week)}
+            day_of_week = next_day1 + dt.timedelta(2)
+        else:
+            next_day2 = next_day1 + dt.timedelta(1)
+            if next_day2.weekday() == 5:
+                query_part = {'end': str(next_day2), 'start': str(day_of_week)}
+                day_of_week = next_day2 + dt.timedelta(2)
+            else:
+                next_day3 = next_day2 + dt.timedelta(1)
+                if next_day3.weekday() == 5:
+                    query_part = {'end': str(next_day3), 'start': str(day_of_week)}
+                    day_of_week = next_day3 + dt.timedelta(2)
+                else:
+                    next_day4 = next_day3 + dt.timedelta(1)
+                    if next_day4.weekday() == 5:
+                        query_part = {'end': str(next_day4), 'start': str(day_of_week)}
+                        day_of_week = next_day4 + dt.timedelta(2)
+                    else:
+                        next_day5 = next_day4 + dt.timedelta(1)
+                        query_part = {'end': str(next_day5), 'start': str(day_of_week)}
+                        day_of_week = next_day5 + dt.timedelta(2)
+        query.append(query_part)
     for item in query:
         app_data = client.count_unique('Page', 'user.pk',
                                        timeframe=item,
