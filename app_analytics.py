@@ -62,7 +62,6 @@ def end_date_query():
 def daily_query_start(day, month, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
     query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
-    # query = [{'end': '11/27/2015', 'start': '11/23/2015'}, {'end': '11/20/2015', 'start': '11/16/2015'}]
     return query
 
 
@@ -98,45 +97,58 @@ def extract_date_monthly(raw_data):
 
 
 def app_data_daily(month, day, year):
-    start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
-    num_weeks = ceil(query_size / 7)
-    day_of_week = start_day.weekday()
-    if day_of_week == 5:
-        day_of_week = start_day + dt.timedelta(2)
-    elif day_of_week == 6:
-        day_of_week = start_day + dt.timedelta(1)
-    else:
-        day_of_week = start_day
-    query = []
-    for x in range(num_weeks, 0, -1):
-        next_day1 = day_of_week + dt.timedelta(1)
-        if next_day1.weekday() == 5:
-            query_part = {'end': str(next_day1), 'start': str(day_of_week)}
-            day_of_week = next_day1 + dt.timedelta(2)
+    if not weekends:
+        start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
+        num_weeks = ceil(query_size / 7)
+        day_of_week = start_day.weekday()
+        if day_of_week == 5:
+            day_of_week = start_day + dt.timedelta(2)
+        elif day_of_week == 6:
+            day_of_week = start_day + dt.timedelta(1)
         else:
-            next_day2 = next_day1 + dt.timedelta(1)
-            if next_day2.weekday() == 5:
-                query_part = {'end': str(next_day2), 'start': str(day_of_week)}
-                day_of_week = next_day2 + dt.timedelta(2)
+            day_of_week = start_day
+        query = []
+        for x in range(num_weeks, 0, -1):
+            next_day1 = day_of_week + dt.timedelta(1)
+            if next_day1.weekday() == 5:
+                query_part = {'end': str(next_day1), 'start': str(day_of_week)}
+                day_of_week = next_day1 + dt.timedelta(2)
             else:
-                next_day3 = next_day2 + dt.timedelta(1)
-                if next_day3.weekday() == 5:
-                    query_part = {'end': str(next_day3), 'start': str(day_of_week)}
-                    day_of_week = next_day3 + dt.timedelta(2)
+                next_day2 = next_day1 + dt.timedelta(1)
+                if next_day2.weekday() == 5:
+                    query_part = {'end': str(next_day2), 'start': str(day_of_week)}
+                    day_of_week = next_day2 + dt.timedelta(2)
                 else:
-                    next_day4 = next_day3 + dt.timedelta(1)
-                    if next_day4.weekday() == 5:
-                        query_part = {'end': str(next_day4), 'start': str(day_of_week)}
-                        day_of_week = next_day4 + dt.timedelta(2)
+                    next_day3 = next_day2 + dt.timedelta(1)
+                    if next_day3.weekday() == 5:
+                        query_part = {'end': str(next_day3), 'start': str(day_of_week)}
+                        day_of_week = next_day3 + dt.timedelta(2)
                     else:
-                        next_day5 = next_day4 + dt.timedelta(1)
-                        query_part = {'end': str(next_day5), 'start': str(day_of_week)}
-                        day_of_week = next_day5 + dt.timedelta(2)
-        query.append(query_part)
-    temp_df = pd.DataFrame()
-    for item in query:
+                        next_day4 = next_day3 + dt.timedelta(1)
+                        if next_day4.weekday() == 5:
+                            query_part = {'end': str(next_day4), 'start': str(day_of_week)}
+                            day_of_week = next_day4 + dt.timedelta(2)
+                        else:
+                            next_day5 = next_day4 + dt.timedelta(1)
+                            query_part = {'end': str(next_day5), 'start': str(day_of_week)}
+                            day_of_week = next_day5 + dt.timedelta(2)
+            query.append(query_part)
+        temp_df = pd.DataFrame()
+        for item in query:
+            app_data = client.count_unique('Page', 'user.pk',
+                                           timeframe=item,
+                                           timezone=5,
+                                           interval='daily')
+            extract_date_daily(app_data)
+            df = pd.DataFrame(app_data)
+            if temp_df.empty:
+                temp_df = pd.DataFrame(app_data)
+            else:
+                temp_df = temp_df.merge(df, how='outer')
+    else:
+        temp_df = pd.DataFrame()
         app_data = client.count_unique('Page', 'user.pk',
-                                       timeframe=item,
+                                       timeframe=daily_query_start(day, month, year),
                                        timezone=5,
                                        interval='daily')
         extract_date_daily(app_data)
@@ -211,17 +223,17 @@ def app_data_monthly(month, day, year):
 
 end_date_query()
 app_data_daily(month=end_month, day=end_day, year=end_year)
-# app_data_monthly(month=end_month, day=end_day, year=end_year)
-# mau_df = pd.read_pickle('MAU.pickle')
-# dau_df = pd.read_pickle('DAU.pickle')
-# mau_dau_df = dau_df.join(mau_df)
-# mau_dau_df.to_pickle('MAU-DAU.pickle')
-# division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
-# df = pd.DataFrame(division)
-# print(df.head())
-# df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
-# main_df = mau_dau_df.join(df)
-#
-# print(main_df.head())
-#
-# df.iplot(kind='scatter', filename='cufflinks/DAU_MAU')
+app_data_monthly(month=end_month, day=end_day, year=end_year)
+mau_df = pd.read_pickle('MAU.pickle')
+dau_df = pd.read_pickle('DAU.pickle')
+mau_dau_df = dau_df.join(mau_df)
+mau_dau_df.to_pickle('MAU-DAU.pickle')
+division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+df = pd.DataFrame(division)
+print(df.head())
+df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+main_df = mau_dau_df.join(df)
+
+print(main_df.head())
+
+df.iplot(kind='scatter', filename='cufflinks/DAU_MAU')
