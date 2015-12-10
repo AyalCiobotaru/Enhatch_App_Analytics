@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df427cee-adcd-4bee-8e53-ea205f6d80e2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DAU.pickle" afterPath="$PROJECT_DIR$/DAU.pickle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_analytics.py" afterPath="$PROJECT_DIR$/app_analytics.py" />
     </list>
     <ignored path="Enhatch_App_Analytics.iws" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="app_analytics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54046637">
-              <caret line="134" column="32" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.3772291">
+              <caret line="136" column="22" selection-start-line="136" selection-start-column="22" selection-end-line="136" selection-end-column="22" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -560,6 +559,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5130" column="0" selection-start-line="5130" selection-start-column="0" selection-end-line="5130" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -596,8 +596,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54046637">
-          <caret line="134" column="32" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.3772291">
+          <caret line="136" column="22" selection-start-line="136" selection-start-column="22" selection-end-line="136" selection-end-column="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

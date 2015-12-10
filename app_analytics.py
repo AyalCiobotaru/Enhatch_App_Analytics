@@ -133,6 +133,7 @@ def app_data_daily(month, day, year):
                         query_part = {'end': str(next_day5), 'start': str(day_of_week)}
                         day_of_week = next_day5 + dt.timedelta(2)
         query.append(query_part)
+    temp_df = pd.DataFrame()
     for item in query:
         app_data = client.count_unique('Page', 'user.pk',
                                        timeframe=item,
