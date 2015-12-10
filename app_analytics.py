@@ -14,15 +14,54 @@ client = KeenClient(
     read_key=open("read_key.txt", 'r').read()
 )
 
-# end_month = int(input("What month would you like the query to end?"))
-# end_day = int(input("What day would you like the query to end?"))
-# end_year = int(input("What year would you like the query to end?"))
-query_size = int(input("How many days do you want in this query?"))
+
+def end_date_query():
+    print('Specify query end date\n-------------------------')
+    global end_month
+    end_month = int(input("What month would you like the query to end?"))
+    global end_day
+    end_day = int(input("What day would you like the query to end?"))
+    global end_year
+    end_year = int(input("What year would you like the query to end?"))
+
+    x = 1
+    while x == 1:
+        question = input("\nWould you like to:\n"
+                         "1)Go a set number of days back?\n"
+                         "2)Pick a specific date in the past to start?\n"
+                         "1 or 2?:")
+        if question == '1':
+            global query_size
+            query_size = int(input("How many days do you want in this query?"))
+            x = 2
+        elif question == '2':
+            global start_date_day
+            start_date_day = input("What month would you like the query to start?")
+            global start_date_month
+            start_date_month = int(input("What day would you like the query to start?"))
+            global start_date_year
+            start_date_year = int(input("What year would you like the query to start?"))
+            x = 2
+        else:
+            print("That wasn't a viable option, please try again and pick 1 or 2")
+    x = 1
+    while x == 1:
+        question2 = input("\nWould you like to include weekends?\nY/N?:")
+        global weekends
+        if question2 == "Y" or question2 == "y":
+            weekends = True
+            x = 2
+        elif question2 == "N" or question2 == "n":
+            weekends = False
+            x = 2
+        else:
+            print("Not a viable option, please try again")
 
 
 def daily_query_start(day, month, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
     query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
+    #query = [{'end': '11/27/2015', 'start': '11/23/2015'}, {'end': '11/20/2015', 'start': '11/16/2015'}]
     return query
 
 
@@ -83,40 +122,69 @@ def app_data_monthly(month, day, year):
     year1 = year
     temp_df = pd.DataFrame
     while x < query_size:
-        app_data = client.count_unique('Page', 'user.pk',
-                                       timeframe=monthly_query_start(day1, month1, year1),
-                                       timezone=5)
-        # extract_date_monthly(app_data)
-        list_dict = [{'Date': str((dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1))),
-                      'value': str(app_data)}]
-        df = pd.DataFrame(list_dict)
+        if not weekends:
+            if (dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1)).weekday() == 5 or \
+               (dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1)).weekday() == 6:
+                new_date = (dt.datetime(year1, month1, day1) + dt.timedelta(1))
+                day1 = int(new_date.strftime('%d'))
+                month1 = int(new_date.strftime('%m'))
+                year1 = int(new_date.strftime('%Y'))
+                continue
+            else:
+                app_data = client.count_unique('Page', 'user.pk',
+                                               timeframe=monthly_query_start(day1, month1, year1),
+                                               timezone=5)
+                list_dict = [{'Date': str((dt.datetime(year1, month1, day1) -
+                                           dt.timedelta(query_size-1)).strftime('%m-%d-%Y')),
+                              'value': app_data}]
+                df = pd.DataFrame(list_dict)
 
-        if temp_df.empty:
-            temp_df = df
+                if temp_df.empty:
+                    temp_df = df
+                else:
+                    temp_df = temp_df.merge(df, how='outer')
+                x += 1
+                new_date = (dt.datetime(year1, month1, day1) + dt.timedelta(1))
+                day1 = int(new_date.strftime('%d'))
+                month1 = int(new_date.strftime('%m'))
+                year1 = int(new_date.strftime('%Y'))
         else:
-            temp_df = temp_df.merge(df, how='outer')
-        x += 1
-        new_date = (dt.datetime(year1, month1, day1) + dt.timedelta(1))
-        day1 = int(new_date.strftime('%d'))
-        month1 = int(new_date.strftime('%m'))
-        year1 = int(new_date.strftime('%Y'))
-        if x == 30:
-            print('hi')
+            app_data = client.count_unique('Page', 'user.pk',
+                                           timeframe=monthly_query_start(day1, month1, year1),
+                                           timezone=5)
+            list_dict = [{'Date': str((dt.datetime(year1, month1, day1) -
+                                       dt.timedelta(query_size-1)).strftime('%m-%d-%Y')),
+                          'value': app_data}]
+            df = pd.DataFrame(list_dict)
+
+            if temp_df.empty:
+                temp_df = df
+            else:
+                temp_df = temp_df.merge(df, how='outer')
+            x += 1
+            new_date = (dt.datetime(year1, month1, day1) + dt.timedelta(1))
+            day1 = int(new_date.strftime('%d'))
+            month1 = int(new_date.strftime('%m'))
+            year1 = int(new_date.strftime('%Y'))
+
     temp_df.set_index('Date', inplace=True)
     temp_df.rename(columns={'value': 'MAU'}, inplace=True)
     temp_df.to_pickle('MAU.pickle')
-    print(temp_df.head())
+    print(temp_df)
 
-# app_data_daily(month=end_month, day=end_day, year=end_year)
-app_data_monthly(day=1, month=12, year=2015)
-mau_df = pd.read_pickle('MAU.pickle')
+end_date_query()
+app_data_daily(month=end_month, day=end_day, year=end_year)
+# app_data_monthly(month=end_month, day=end_day, year=end_year)
+# mau_df = pd.read_pickle('MAU.pickle')
 # dau_df = pd.read_pickle('DAU.pickle')
 # mau_dau_df = dau_df.join(mau_df)
 # mau_dau_df.to_pickle('MAU-DAU.pickle')
 # division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
 # df = pd.DataFrame(division)
+# print(df.head())
 # df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
 # main_df = mau_dau_df.join(df)
 #
-# df.iplot(kind='scatter', filename='cufflinks/cf-simple-line')
-print(mau_df)
+# print(main_df.head())
+#
+# df.iplot(kind='scatter', filename='cufflinks/DAU_MAU')
