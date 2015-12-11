@@ -17,13 +17,21 @@ client = KeenClient(
 
 
 def end_date_query():
-    print('Specify query end date\n-------------------------')
-    global end_month
-    end_month = int(input("What month would you like the query to end?"))
-    global end_day
-    end_day = int(input("What day would you like the query to end?"))
-    global end_year
-    end_year = int(input("What year would you like the query to end?"))
+    x = 1
+    while x == 1:
+        print('Specify query end date\n-------------------------')
+        global end_month
+        global end_day
+        global end_year
+        try:
+            end_date_raw = input("\nWhat date would you like the query to end?\n"
+                                 "Please put it in format MM/DD/YYYY:\n")
+            end_day = int(dt.datetime.strptime(end_date_raw, '%m/%d/%Y').strftime('%d'))
+            end_month = int(dt.datetime.strptime(end_date_raw, '%m/%d/%Y').strftime('%m'))
+            end_year = int(dt.datetime.strptime(end_date_raw, '%m/%d/%Y').strftime('%Y'))
+            x = 2
+        except ValueError:
+            print("That was incorrect format, please try again\n")
 
     x = 1
     while x == 1:
@@ -33,41 +41,46 @@ def end_date_query():
                          "1 or 2?:")
         if question == '1':
             global query_size
-            query_size = int(input("How many days do you want in this query?"))
+            query_size = int(input("\nHow many days do you want in this query?"))
             x = 2
         elif question == '2':
-            global start_date_day
-            start_date_day = input("What month would you like the query to start?")
-            global start_date_month
-            start_date_month = int(input("What day would you like the query to start?"))
-            global start_date_year
-            start_date_year = int(input("What year would you like the query to start?"))
-            x = 2
+            start_date_raw = input("\nWhat date would you like the query to start?\n"
+                                   "Please put it in format MM/DD/YYYY:\n")
+            try:
+                start_day = int(dt.datetime.strptime(start_date_raw, '%m/%d/%Y').strftime('%d'))
+                start_month = int(dt.datetime.strptime(start_date_raw, '%m/%d/%Y').strftime('%m'))
+                start_year = int(dt.datetime.strptime(start_date_raw, '%m/%d/%Y').strftime('%Y'))
+                d1 = dt.datetime(end_year, end_month, end_day)
+                d2 = dt.datetime(start_year, start_month, start_day)
+                query_size = abs((d1-d2).days + 1)
+                x = 2
+            except ValueError:
+                print("that was incorrect format, please try again\n")
         else:
             print("That wasn't a viable option, please try again and pick 1 or 2")
     x = 1
     while x == 1:
-        question2 = input("\nWould you like to include weekends?\nY/N?:")
+        question2 = input("\nWould you like to exclude weekends?\nY = 1/N = 2?:")
         global weekends
-        if question2 == "Y" or question2 == "y":
-            weekends = True
-            x = 2
-        elif question2 == "N" or question2 == "n":
+        if question2 == "Y" or question2 == "y" or question2 == "1":
             weekends = False
+            x = 2
+        elif question2 == "N" or question2 == "n" or question2 == "2":
+            weekends = True
             x = 2
         else:
             print("Not a viable option, please try again")
 
 
 def daily_query_start(day, month, year):
-    start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
+    start_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
     query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
     return query
 
 
 def monthly_query_start(day, month, year):
-    monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size+30)
-    monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
+    monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size + 30)
+    monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
     query = {'end': str(monthly_end_day), 'start': str(monthly_start_day)}
     return query
 
@@ -98,17 +111,20 @@ def extract_date_monthly(raw_data):
 
 def app_data_daily(month, day, year):
     if not weekends:
-        start_day = dt.datetime(year, month, day) - dt.timedelta(query_size-1)
+        start_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
         num_weeks = ceil(query_size / 7)
-        day_of_week = start_day.weekday()
-        if day_of_week == 5:
+        if query_size % 7 == 0:
+            num_weeks += 1
+        week_day = start_day.weekday()
+        if week_day == 5:
             day_of_week = start_day + dt.timedelta(2)
-        elif day_of_week == 6:
+        elif week_day == 6:
             day_of_week = start_day + dt.timedelta(1)
         else:
             day_of_week = start_day
         query = []
-        for x in range(num_weeks, 0, -1):
+
+        while num_weeks != 1:
             next_day1 = day_of_week + dt.timedelta(1)
             if next_day1.weekday() == 5:
                 query_part = {'end': str(next_day1), 'start': str(day_of_week)}
@@ -133,6 +149,34 @@ def app_data_daily(month, day, year):
                             query_part = {'end': str(next_day5), 'start': str(day_of_week)}
                             day_of_week = next_day5 + dt.timedelta(2)
             query.append(query_part)
+            num_weeks -= 1
+
+        if day_of_week == dt.datetime(year, month, day):
+            next_day1 = day_of_week + dt.timedelta(1)
+            query_part = {'end': str(next_day1), 'start': str(day_of_week)}
+        else:
+            next_day1 = day_of_week + dt.timedelta(1)
+            if next_day1 == dt.datetime(year, month, day):
+                next_day2 = next_day1 + dt.timedelta(1)
+                query_part = {'end': str(next_day2), 'start': str(day_of_week)}
+            else:
+                next_day2 = next_day1 + dt.timedelta(1)
+                if next_day2 == dt.datetime(year, month, day):
+                    next_day3 = next_day2 + dt.timedelta(1)
+                    query_part = {'end': str(next_day3), 'start': str(day_of_week)}
+                else:
+                    next_day3 = next_day2 + dt.timedelta(1)
+                    if next_day3 == dt.datetime(year, month, day):
+                        next_day4 = next_day3 + dt.timedelta(1)
+                        query_part = {'end': str(next_day4), 'start': str(day_of_week)}
+                    else:
+                        next_day4 = next_day3 + dt.timedelta(1)
+                        if next_day4 == dt.datetime(year, month, day):
+                            next_day5 = next_day4 + dt.timedelta(1)
+                            query_part = {'end': str(next_day5), 'start': str(day_of_week)}
+
+        query.append(query_part)
+
         temp_df = pd.DataFrame()
         for item in query:
             app_data = client.count_unique('Page', 'user.pk',
@@ -223,17 +267,18 @@ def app_data_monthly(month, day, year):
 
 end_date_query()
 app_data_daily(month=end_month, day=end_day, year=end_year)
-app_data_monthly(month=end_month, day=end_day, year=end_year)
-mau_df = pd.read_pickle('MAU.pickle')
-dau_df = pd.read_pickle('DAU.pickle')
-mau_dau_df = dau_df.join(mau_df)
-mau_dau_df.to_pickle('MAU-DAU.pickle')
-division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
-df = pd.DataFrame(division)
-print(df.head())
-df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
-main_df = mau_dau_df.join(df)
-
-print(main_df.head())
-
-df.iplot(kind='scatter', filename='cufflinks/DAU_MAU')
+# app_data_monthly(month=end_month, day=end_day, year=end_year)
+# mau_df = pd.read_pickle('MAU.pickle')
+# dau_df = pd.read_pickle('DAU.pickle')
+# mau_dau_df = dau_df.join(mau_df)
+#
+# mau_dau_df.to_csv('MAU_DAU.csv')
+# mau_dau_df.to_pickle('MAU-DAU.pickle')
+# division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+# df = pd.DataFrame(division)
+# df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+# main_df = mau_dau_df.join(df)
+# #
+# print(main_df.head())
+# #
+# main_df.iplot(kind='scatter', filename='cufflinks/fun_stuff')
