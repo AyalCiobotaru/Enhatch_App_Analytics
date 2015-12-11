@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="df427cee-adcd-4bee-8e53-ea205f6d80e2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DAU.pickle" afterPath="$PROJECT_DIR$/DAU.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MAU.pickle" afterPath="$PROJECT_DIR$/MAU.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MAU_DAU.csv" afterPath="$PROJECT_DIR$/MAU_DAU.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_analytics.py" afterPath="$PROJECT_DIR$/app_analytics.py" />
     </list>
     <ignored path="Enhatch_App_Analytics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,16 +29,26 @@
       <file leaf-file-name="app_analytics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76898223">
-              <caret line="31" column="17" selection-start-line="29" selection-start-column="90" selection-end-line="31" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.20710059">
+              <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#7274#9747#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app_analytics.py" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -260,7 +273,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26970956" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -279,7 +292,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="36" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/app_analytics.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -291,6 +311,8 @@
         <watch expression="next_day3.weekday()" language="Python" />
         <watch expression="next_day4.weekday()" language="Python" />
         <watch expression="next_day5.weekday()" language="Python" />
+        <watch expression="weekends" language="Python" />
+        <watch expression="dt.datetime(year, month, day)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -300,7 +322,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -310,7 +332,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -320,7 +342,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -330,7 +352,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -340,7 +362,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -350,7 +372,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -360,7 +382,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -405,7 +427,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -505,6 +527,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5130" column="0" selection-start-line="5130" selection-start-column="0" selection-end-line="5130" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -539,10 +562,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76898223">
-          <caret line="31" column="17" selection-start-line="29" selection-start-column="90" selection-end-line="31" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.20710059">
+          <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#7274#9747#0" expanded="false" />
           </folding>
         </state>
       </provider>

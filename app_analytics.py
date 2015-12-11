@@ -16,6 +16,174 @@ client = KeenClient(
 )
 
 
+def user_wants():
+    x = 1
+    global decision1
+    while x == 1:
+        decision1 = input('What would you like to do today?\n'
+                          '1) Find DAU\n'
+                          '2) Find MAU\n'
+                          '3) Find Both\n')
+        if decision1 == "1":
+            end_date_query()
+            app_data_daily(month=end_month, day=end_day, year=end_year)
+            x = 2
+
+        elif decision1 == "2":
+            end_date_query()
+            app_data_monthly(month=end_month, day=end_day, year=end_year)
+            x = 2
+
+        elif decision1 == "3":
+            end_date_query()
+            app_data_daily(month=end_month, day=end_day, year=end_year)
+            app_data_monthly(month=end_month, day=end_day, year=end_year)
+            x = 2
+        else:
+            print("Wasn't a viable option, please pick again\n")
+    data_end_use()
+
+
+def data_end_use():
+    x = 1
+    y = 1
+    global decision1
+    try:
+        if decision1 == '1':
+            print('Handling DAU')
+        elif decision1 == '2':
+            print('Handling MAU')
+        else:
+            print('Handling both DAU and MAU')
+    except NameError:
+        while y == 1:
+            decision1 = input('What files are we handling?\n'
+                              '1) DAU\n'
+                              '2) MAU\n'
+                              '3) Both')
+            if decision1 == '1':
+                y = 2
+            elif decision1 != '2':
+                y = 2
+            elif decision1 != '3':
+                y = 2
+            else:
+                print('Not a valid option, please try again')
+
+    while x == 1:
+        decision2 = input('What would you like to do with the information acquired?\n'
+                          '1) Dump into a csv\n'
+                          '2) Dump into a JSON\n'
+                          '3) Create a Plotly graph\n'
+                          '4) Create a graph in Python\n')
+        if decision2 == '1':
+            if decision1 == '1':
+                dau_df = pd.read_pickle('DAU.pickle')
+                dau_df.to_csv('DAU.csv')
+            elif decision1 == '2':
+                mau_df = pd.read_pickle('MAU.pickle')
+                mau_df.to_csv('MAU.csv')
+            elif decision1 == '3':
+                mau_df = pd.read_pickle('MAU.pickle')
+                dau_df = pd.read_pickle('DAU.pickle')
+                mau_dau_df = dau_df.join(mau_df)
+
+                division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+                df = pd.DataFrame(division)
+                df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+                main_df = mau_dau_df.join(df)
+                main_df.to_csv('MAU_DAU.csv')
+            multiple_things = input('\nWould you like to do anything else with the data?\n'
+                                    'Y = 1/N = 2:')
+            if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
+                x = 1
+            else:
+                x = 2
+
+        elif decision2 == '2':
+            if decision1 == '1':
+                dau_df = pd.read_pickle('DAU.pickle')
+                dau_df.to_json('DAU.json')
+            elif decision1 == '2':
+                mau_df = pd.read_pickle('MAU.pickle')
+                mau_df.to_json('MAU.json')
+            elif decision1 == '3':
+                mau_df = pd.read_pickle('MAU.pickle')
+                dau_df = pd.read_pickle('DAU.pickle')
+                mau_dau_df = dau_df.join(mau_df)
+
+                division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+                df = pd.DataFrame(division)
+                df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+                main_df = mau_dau_df.join(df)
+                main_df.to_json('MAU_DAU.json')
+            multiple_things = input('\nWould you like to do anything else with the data?\n'
+                                    'Y = 1/N = 2:')
+            if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
+                x = 1
+            else:
+                x = 2
+
+        elif decision2 == '3':
+            graph_name = input('\nWhat would you like to name the graph?\n')
+            graph_folder = input('\nWhat folder would you like to put the graph in?\n')
+            if decision1 == '1':
+                dau_df = pd.read_pickle('DAU.pickle')
+                dau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
+            elif decision1 == '2':
+                mau_df = pd.read_pickle('MAU.pickle')
+                mau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
+            elif decision1 == '3':
+                mau_df = pd.read_pickle('MAU.pickle')
+                dau_df = pd.read_pickle('DAU.pickle')
+                mau_dau_df = dau_df.join(mau_df)
+
+                division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+                df = pd.DataFrame(division)
+                df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+                main_df = mau_dau_df.join(df)
+                main_df.iplot(kind='scatter', filename=graph_folder + '/' + graph_name)
+            multiple_things = input('\nWould you like to do anything else with the data?\n'
+                                    'Y = 1/N = 2:')
+            if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
+                x = 1
+            else:
+                x = 2
+
+        elif decision2 == '4':
+            awkward = input('This is not set up yet, would you like to do something else?\n'
+                            'Y or N:')
+            if awkward == 'Y':
+                x = 1
+            else:
+                break
+            # if decision1 == '1':
+            #     dau_df = pd.read_pickle('DAU.pickle')
+            #     dau_df.to_json('DAU.json')
+            # elif decision1 == '2':
+            #     mau_df = pd.read_pickle('MAU.pickle')
+            #     mau_df.to_json('MAU.json')
+            # elif decision1 == '3':
+            #     mau_df = pd.read_pickle('MAU.pickle')
+            #     dau_df = pd.read_pickle('DAU.pickle')
+            #     mau_dau_df = dau_df.join(mau_df)
+            #
+            #     division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+            #     df = pd.DataFrame(division)
+            #     df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+            #     main_df = mau_dau_df.join(df)
+            #     main_df.to_json('MAU_DAU.json')
+            # multiple_things = input('\nWould you like to do anything else with the data?\n'
+            #                         'Y = 1/N = 2:')
+            # if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
+            #     x = 1
+            # else:
+            #     x = 2
+
+        else:
+            print("That wasn't a viable option, please try again")
+
+
 def end_date_query():
     x = 1
     while x == 1:
@@ -41,7 +209,7 @@ def end_date_query():
                          "1 or 2?:")
         if question == '1':
             global query_size
-            query_size = int(input("\nHow many days do you want in this query?"))
+            query_size = int(input("\nHow many days do you want in this query?")) + 1
             x = 2
         elif question == '2':
             start_date_raw = input("\nWhat date would you like the query to start?\n"
@@ -171,9 +339,8 @@ def app_data_daily(month, day, year):
                         query_part = {'end': str(next_day4), 'start': str(day_of_week)}
                     else:
                         next_day4 = next_day3 + dt.timedelta(1)
-                        if next_day4 == dt.datetime(year, month, day):
-                            next_day5 = next_day4 + dt.timedelta(1)
-                            query_part = {'end': str(next_day5), 'start': str(day_of_week)}
+                        next_day5 = next_day4 + dt.timedelta(1)
+                        query_part = {'end': str(next_day5), 'start': str(day_of_week)}
 
         query.append(query_part)
 
@@ -222,6 +389,7 @@ def app_data_monthly(month, day, year):
                 day1 = int(new_date.strftime('%d'))
                 month1 = int(new_date.strftime('%m'))
                 year1 = int(new_date.strftime('%Y'))
+                x += 1
                 continue
             else:
                 app_data = client.count_unique('Page', 'user.pk',
@@ -265,20 +433,5 @@ def app_data_monthly(month, day, year):
     temp_df.to_pickle('MAU.pickle')
     print(temp_df)
 
-end_date_query()
-app_data_daily(month=end_month, day=end_day, year=end_year)
-# app_data_monthly(month=end_month, day=end_day, year=end_year)
-# mau_df = pd.read_pickle('MAU.pickle')
-# dau_df = pd.read_pickle('DAU.pickle')
-# mau_dau_df = dau_df.join(mau_df)
-#
-# mau_dau_df.to_csv('MAU_DAU.csv')
-# mau_dau_df.to_pickle('MAU-DAU.pickle')
-# division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
-# df = pd.DataFrame(division)
-# df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
-# main_df = mau_dau_df.join(df)
-# #
-# print(main_df.head())
-# #
-# main_df.iplot(kind='scatter', filename='cufflinks/fun_stuff')
+# user_wants()
+data_end_use()
