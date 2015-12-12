@@ -433,5 +433,4 @@ def app_data_monthly(month, day, year):
     temp_df.to_pickle('MAU.pickle')
     print(temp_df)
 
-# user_wants()
-data_end_use()
+user_wants()
