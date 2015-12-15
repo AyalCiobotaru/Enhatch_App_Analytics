@@ -7,6 +7,7 @@ from math import ceil
 
 style.use('bmh')
 
+# API Keys for EnhatchMarketingApp2.0
 client = KeenClient(
     project_id=open("project_id.txt", 'r').read(),
     master_key=open("master_key.txt", 'r').read(),
@@ -15,6 +16,7 @@ client = KeenClient(
 )
 
 
+# Takes in a raw input of what the user wants to do
 def user_wants():
     x = 1
     global decision1
@@ -22,32 +24,42 @@ def user_wants():
         decision1 = input('What would you like to do today?\n'
                           '1) Find DAU\n'
                           '2) Find MAU\n'
-                          '3) Find Both\n')
-        if decision1 == "1":
+                          '3) Find Both\n'
+                          '4) Graph, or acquire information from previous pull\n')
+        if decision1 == "1":  # if DAU is chosen, request the end date and then find DAU
             end_date_query()
             app_data_daily(month=end_month, day=end_day, year=end_year)
             x = 2
 
-        elif decision1 == "2":
+        elif decision1 == "2":  # if MAU is chosen, request the end date and then find MAU
             end_date_query()
             app_data_monthly(month=end_month, day=end_day, year=end_year)
             x = 2
 
-        elif decision1 == "3":
+        elif decision1 == "3":  # if both is chosen, request the end date and then find both
             end_date_query()
             app_data_daily(month=end_month, day=end_day, year=end_year)
             app_data_monthly(month=end_month, day=end_day, year=end_year)
             x = 2
-        else:
+
+        elif decision1 == "4":  # Use previous pull's data
+            decision1 = input('\nWhat information did you use on the last pull?\n'
+                              '1) DAU\n'
+                              '2) MAU\n'
+                              '3) Both\n')
+            x = 2
+
+        else:  # Error checking
             print("Wasn't a viable option, please pick again\n")
-    python_graph()
-    data_end_use()
+    python_graph()  # Creates the Python Graph
+    data_end_use()  # Takes in a raw input of what the user wants to do with data acquried
 
 
 def data_end_use():
     x = 1
     y = 1
     global decision1
+    #
     try:
         if decision1 == '1':
             print('Handling DAU\n'
