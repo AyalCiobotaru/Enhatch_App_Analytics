@@ -5,8 +5,6 @@ from matplotlib import style
 import datetime as dt
 from math import ceil
 
-style.use('bmh')
-
 # API Keys for EnhatchMarketingApp2.0
 client = KeenClient(
     project_id=open("project_id.txt", 'r').read(),
@@ -14,6 +12,23 @@ client = KeenClient(
     write_key=open("write_key.txt", 'r').read(),
     read_key=open("read_key.txt", 'r').read()
 )
+
+
+company_app_keys = {'enhatch': '118368274437335737698029276469999809095',
+                    'rr Donnelly': '122169787206987846341383818731152558295',
+                    'enhatch test': '129690986843314177890874392835790686791',
+                    'ge transportation': '161299849888704839492897537232844536620',
+                    'sonoma': '181479502579786137791904991511865109911',
+                    'matt app': '187164587218548182461213257669257342645',
+                    'paradigm spine': '224234185580937634736656715550056596303',
+                    'allied building products': '253836980674808659119433391188831533066',
+                    'ge ms&d': '285481600560299472311537967916336092115',
+                    'medicrea': '28957996790114179931087019134108290920',
+                    'seaspine': '293004830260428685669112292533809804613',
+                    'centinel spine': '31544617854315997232220268879565974600',
+                    'echo': '35431404049861511531147680883494651221',
+                    'fh ortho': '71458724716185243148256933560969741161',
+                    'wartsila': '95877466981632317159181119372243691526'}
 
 
 # Function to acuire what the user wants to do
@@ -162,6 +177,7 @@ def data_end_use():
 
 # Functino to create the python graph after each pull of data
 def python_graph():
+    style.use('bmh')
     # checks to see what information the user wanted
     if decision1 == '1':
         dau_df = pd.read_pickle('DAU.pickle')
@@ -248,6 +264,36 @@ def end_date_query():
             x = 2
         elif question2 == "N" or question2 == "n" or question2 == "2":
             weekends = True
+            x = 2
+        else:
+            print("Not a viable option, please try again")
+    x = 1
+    while x == 1:
+        # option to filter by company
+        question2 = input("\nWould you like to filter by company?\nY = 1/N = 2?:")
+        global company_filter
+        global requested_company
+        if question2 == "Y" or question2 == "y" or question2 == "1":
+            requested_company = (input('\nWhat company would you like?').lower())
+            if requested_company in company_app_keys:
+                company_filter = True
+                x = 2
+            else:
+                add_company = input("\nThat company isn't valid check the spelling.\n"
+                                    "If the spelling is correct, would you like to add it?\n"
+                                    "If it isn't select option 2 and restart\n"
+                                    "Y = 1/ N = 2?:")
+                if add_company == 'Y' or add_company == 'y' or add_company == '1':
+                    company_name = input('What is the name of the company?')
+                    company_key = input('What is the app key for the company?')
+                    company_app_keys[company_name] = company_key
+                    requested_company = company_name
+                    company_filter = True
+                    x = 2
+                if add_company == 'N' or add_company == 'n' or add_company == '2':
+                    x = 1
+        elif question2 == "N" or question2 == "n" or question2 == "2":
+            company_filter = False
             x = 2
         else:
             print("Not a viable option, please try again")
@@ -369,10 +415,23 @@ def app_data_daily(month, day, year):
 
         temp_df = pd.DataFrame()
         for item in query:
-            app_data = client.count_unique('Page', 'user.pk',
-                                           timeframe=item,
-                                           timezone=5,
-                                           interval='daily')
+            global company_filter
+            global requested_company
+            if company_filter:
+                app_data = client.count_unique('Page', 'user.pk',
+                                               timeframe=item,
+                                               timezone=5,
+                                               interval='daily',
+                                               filters=[
+                                                   {'operator': 'eq',
+                                                    'property_name': 'app_key',
+                                                    'property_value': company_app_keys[requested_company]
+                                                    }])
+            else:
+                app_data = client.count_unique('Page', 'user.pk',
+                                               timeframe=item,
+                                               timezone=5,
+                                               interval='daily')
             extract_date_daily(app_data)
             df = pd.DataFrame(app_data)
             if temp_df.empty:
@@ -383,10 +442,21 @@ def app_data_daily(month, day, year):
     # if the user wants to INCLUDE weekends, the above is skipped and this is run
     else:
         temp_df = pd.DataFrame()
-        app_data = client.count_unique('Page', 'user.pk',
-                                       timeframe=daily_query_start(day, month, year),
-                                       timezone=5,
-                                       interval='daily')
+        if company_filter:
+            app_data = client.count_unique('Page', 'user.pk',
+                                           timeframe=daily_query_start(day, month, year),
+                                           timezone=5,
+                                           interval='daily',
+                                           filters=[
+                                               {'operator': 'eq',
+                                                'property_name': 'app_key',
+                                                'property_value': company_app_keys[requested_company]
+                                                }])
+        else:
+            app_data = client.count_unique('Page', 'user.pk',
+                                           timeframe=daily_query_start(day, month, year),
+                                           timezone=5,
+                                           interval='daily')
         extract_date_daily(app_data)
         df = pd.DataFrame(app_data)
         if temp_df.empty:
@@ -423,9 +493,21 @@ def app_data_monthly(month, day, year):
                 continue
             # if it isn't a weekend add it to temp_df
             else:
-                app_data = client.count_unique('Page', 'user.pk',
-                                               timeframe=monthly_query_start(day1, month1, year1),
-                                               timezone=5)
+                global company_filter
+                global requested_company
+                if company_filter:
+                    app_data = client.count_unique('Page', 'user.pk',
+                                                   timeframe=monthly_query_start(day1, month1, year1),
+                                                   timezone=5,
+                                                   filters=[
+                                                    {'operator': 'eq',
+                                                     'property_name': 'app_key',
+                                                     'property_value': company_app_keys[requested_company]
+                                                     }])
+                else:
+                    app_data = client.count_unique('Page', 'user.pk',
+                                                   timeframe=monthly_query_start(day1, month1, year1),
+                                                   timezone=5)
                 list_dict = [{'Date': str((dt.datetime(year1, month1, day1) -
                                            dt.timedelta(query_size-1)).strftime('%m-%d-%Y')),
                               'value': app_data}]
@@ -443,9 +525,19 @@ def app_data_monthly(month, day, year):
 
         # if use wants to include weekends, above process is skipped
         else:
-            app_data = client.count_unique('Page', 'user.pk',
-                                           timeframe=monthly_query_start(day1, month1, year1),
-                                           timezone=5)
+            if company_filter:
+                app_data = client.count_unique('Page', 'user.pk',
+                                               timeframe=monthly_query_start(day1, month1, year1),
+                                               timezone=5,
+                                               filters=[
+                                                {'operator': 'eq',
+                                                 'property_name': 'app_key',
+                                                 'property_value': company_app_keys[requested_company]
+                                                 }])
+            else:
+                app_data = client.count_unique('Page', 'user.pk',
+                                               timeframe=monthly_query_start(day1, month1, year1),
+                                               timezone=5)
             list_dict = [{'Date': str((dt.datetime(year1, month1, day1) -
                                        dt.timedelta(query_size-1)).strftime('%m-%d-%Y')),
                           'value': app_data}]
