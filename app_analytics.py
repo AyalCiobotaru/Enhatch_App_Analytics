@@ -16,7 +16,7 @@ client = KeenClient(
 )
 
 
-# Takes in a raw input of what the user wants to do
+# Function to acuire what the user wants to do
 def user_wants():
     x = 1
     global decision1
@@ -55,43 +55,27 @@ def user_wants():
     data_end_use()  # Takes in a raw input of what the user wants to do with data acquried
 
 
+# Function to acquire what the user wants to do with the new data acquired
 def data_end_use():
-    x = 1
-    y = 1
     global decision1
-    #
-    try:
-        if decision1 == '1':
-            print('Handling DAU\n'
-                  '____________________')
-        elif decision1 == '2':
-            print('Handling MAU\n'
-                  '____________________')
-        else:
-            print('Handling both DAU and MAU\n'
-                  '____________________________')
-    except NameError:
-        while y == 1:
-            decision1 = input('What files are we handling?\n'
-                              '1) DAU\n'
-                              '2) MAU\n'
-                              '3) Both')
-            if decision1 == '1':
-                y = 2
-            elif decision1 != '2':
-                y = 2
-            elif decision1 != '3':
-                y = 2
-            else:
-                print('Not a valid option, please try again')
-
-    while x == 1:
+    if decision1 == '1':
+        print('Handling DAU\n'
+              '____________________')
+    elif decision1 == '2':
+        print('Handling MAU\n'
+              '____________________')
+    else:
+        print('Handling both DAU and MAU\n'
+              '____________________________')
+    x = 1
+    while x == 1: # error checking
         decision2 = input('What would you like to do with the information acquired?\n'
                           '1) Dump into a csv\n'
                           '2) Dump into a JSON\n'
                           '3) Create a Plotly graph\n'
                           '4) Nothing\n')
-        if decision2 == '1':
+        if decision2 == '1':  # dumps into a csv
+            # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
                 dau_df.to_csv('DAU.csv')
@@ -103,11 +87,13 @@ def data_end_use():
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
 
+                # creates the MAU/DAU column
                 division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
                 main_df.to_csv('MAU_DAU.csv')
+
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
             if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
@@ -115,7 +101,8 @@ def data_end_use():
             else:
                 x = 2
 
-        elif decision2 == '2':
+        elif decision2 == '2':  # dumps into a JSON
+            # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
                 dau_df.to_json('DAU.json')
@@ -139,9 +126,10 @@ def data_end_use():
             else:
                 x = 2
 
-        elif decision2 == '3':
+        elif decision2 == '3':  # creates a plotly graph
             graph_name = input('\nWhat would you like to name the graph?\n')
             graph_folder = input('\nWhat folder would you like to put the graph in?\n')
+            # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
                 dau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
@@ -172,7 +160,9 @@ def data_end_use():
             print("That wasn't a viable option, please try again")
 
 
+# Functino to create the python graph after each pull of data
 def python_graph():
+    # checks to see what information the user wanted
     if decision1 == '1':
         dau_df = pd.read_pickle('DAU.pickle')
         dau_df['DAU'].plot()
@@ -204,6 +194,7 @@ def python_graph():
         plt.show()
 
 
+# Function to generate the end date the user specified
 def end_date_query():
     x = 1
     while x == 1:
@@ -214,6 +205,7 @@ def end_date_query():
         try:
             end_date_raw = input("\nWhat date would you like the query to end?\n"
                                  "Please put it in format MM/DD/YYYY:\n")
+            # breaks the date up into day month and year
             end_day = int(dt.datetime.strptime(end_date_raw, '%m/%d/%Y').strftime('%d'))
             end_month = int(dt.datetime.strptime(end_date_raw, '%m/%d/%Y').strftime('%m'))
             end_year = int(dt.datetime.strptime(end_date_raw, '%m/%d/%Y').strftime('%Y'))
@@ -222,16 +214,16 @@ def end_date_query():
             print("That was incorrect format, please try again\n")
 
     x = 1
-    while x == 1:
+    while x == 1:  # error checking
         question = input("\nWould you like to:\n"
                          "1)Go a set number of days back?\n"
                          "2)Pick a specific date in the past to start?\n"
                          "1 or 2?:")
-        if question == '1':
+        if question == '1':  # goes a set number of days back
             global query_size
             query_size = int(input("\nHow many days do you want in this query?")) + 1
             x = 2
-        elif question == '2':
+        elif question == '2':  # finds a date in the past and then gets the query_size
             start_date_raw = input("\nWhat date would you like the query to start?\n"
                                    "Please put it in format MM/DD/YYYY:\n")
             try:
@@ -248,6 +240,7 @@ def end_date_query():
             print("That wasn't a viable option, please try again and pick 1 or 2")
     x = 1
     while x == 1:
+        # option to exclude weekends
         question2 = input("\nWould you like to exclude weekends?\nY = 1/N = 2?:")
         global weekends
         if question2 == "Y" or question2 == "y" or question2 == "1":
@@ -260,12 +253,14 @@ def end_date_query():
             print("Not a viable option, please try again")
 
 
+# Function to generate the DAU query
 def daily_query_start(day, month, year):
     start_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
     query = {'end': str(dt.datetime(year, month, (day+1)).date()), 'start': str(start_day.date())}
     return query
 
 
+# Function to generate the MAU query
 def monthly_query_start(day, month, year):
     monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size + 30)
     monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
@@ -273,6 +268,7 @@ def monthly_query_start(day, month, year):
     return query
 
 
+# Function to generate the daily date from the Keen.io ISO date format
 def extract_date_daily(raw_data):
     x = 0
     while x < len(raw_data):
@@ -285,6 +281,7 @@ def extract_date_daily(raw_data):
         x += 1
 
 
+# Function to generate the monthly date from the Keen.io ISO date format
 def extract_date_monthly(raw_data):
     x = 0
     while x < len(raw_data):
@@ -297,13 +294,17 @@ def extract_date_monthly(raw_data):
         x += 1
 
 
+# Function that actually pulls the daily data from Keen
 def app_data_daily(month, day, year):
+    # process that breaks up the daily query into a bunch of little queries that excludes weekends
     if not weekends:
         start_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
         num_weeks = ceil(query_size / 7)
+        # adds one extra week if the remainder is 0 or the user will get one week short
         if query_size % 7 == 0:
             num_weeks += 1
         week_day = start_day.weekday()
+        # checks to see if the start day is a weekend and if it is, makes the start day the following monday
         if week_day == 5:
             day_of_week = start_day + dt.timedelta(2)
         elif week_day == 6:
@@ -312,6 +313,7 @@ def app_data_daily(month, day, year):
             day_of_week = start_day
         query = []
 
+        # goes day by day until it hits Saturday then puts it into the query list in the Keen.io  correct format
         while num_weeks != 1:
             next_day1 = day_of_week + dt.timedelta(1)
             if next_day1.weekday() == 5:
@@ -339,6 +341,7 @@ def app_data_daily(month, day, year):
             query.append(query_part)
             num_weeks -= 1
 
+        # runs for the last week trying to find the end day and not go past it
         if day_of_week == dt.datetime(year, month, day):
             next_day1 = day_of_week + dt.timedelta(1)
             query_part = {'end': str(next_day1), 'start': str(day_of_week)}
@@ -376,6 +379,8 @@ def app_data_daily(month, day, year):
                 temp_df = pd.DataFrame(app_data)
             else:
                 temp_df = temp_df.merge(df, how='outer')
+
+    # if the user wants to INCLUDE weekends, the above is skipped and this is run
     else:
         temp_df = pd.DataFrame()
         app_data = client.count_unique('Page', 'user.pk',
@@ -392,16 +397,21 @@ def app_data_daily(month, day, year):
     temp_df.set_index('Date', inplace=True)
     temp_df.rename(columns={'value': 'DAU'}, inplace=True)
     temp_df.to_pickle('DAU.pickle')
-    print(temp_df)
+    print(temp_df.head())
 
 
+# Function that actually pulls the monthly data from Keen
 def app_data_monthly(month, day, year):
+    # this query might be able to be modified
+    # it takes the first day specified in the query, subtracts thirty and puts the monthly data for that date.
+    # then goes on to the next day and does the same thing for a rolling thirty feel.
     x = 0
     day1 = day
     month1 = month
     year1 = year
-    temp_df = pd.DataFrame
+    temp_df = pd.DataFrame  # empty dataframe to fill
     while x < query_size:
+        # process to exclude weekends
         if not weekends:
             if (dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1)).weekday() == 5 or \
                (dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1)).weekday() == 6:
@@ -411,6 +421,7 @@ def app_data_monthly(month, day, year):
                 year1 = int(new_date.strftime('%Y'))
                 x += 1
                 continue
+            # if it isn't a weekend add it to temp_df
             else:
                 app_data = client.count_unique('Page', 'user.pk',
                                                timeframe=monthly_query_start(day1, month1, year1),
@@ -429,6 +440,8 @@ def app_data_monthly(month, day, year):
                 day1 = int(new_date.strftime('%d'))
                 month1 = int(new_date.strftime('%m'))
                 year1 = int(new_date.strftime('%Y'))
+
+        # if use wants to include weekends, above process is skipped
         else:
             app_data = client.count_unique('Page', 'user.pk',
                                            timeframe=monthly_query_start(day1, month1, year1),
@@ -451,6 +464,6 @@ def app_data_monthly(month, day, year):
     temp_df.set_index('Date', inplace=True)
     temp_df.rename(columns={'value': 'MAU'}, inplace=True)
     temp_df.to_pickle('MAU.pickle')
-    print(temp_df)
+    print(temp_df.head())
 
 user_wants()
