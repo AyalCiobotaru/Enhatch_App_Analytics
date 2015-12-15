@@ -1,12 +1,11 @@
 import pandas as pd
-import pandas_datareader.io as web
-import keen
 from keen.client import KeenClient
-import plotly.plotly as py
-import cufflinks as cl
+import matplotlib.pyplot as plt
+from matplotlib import style
 import datetime as dt
 from math import ceil
 
+style.use('bmh')
 
 client = KeenClient(
     project_id=open("project_id.txt", 'r').read(),
@@ -41,6 +40,7 @@ def user_wants():
             x = 2
         else:
             print("Wasn't a viable option, please pick again\n")
+    python_graph()
     data_end_use()
 
 
@@ -50,11 +50,14 @@ def data_end_use():
     global decision1
     try:
         if decision1 == '1':
-            print('Handling DAU')
+            print('Handling DAU\n'
+                  '____________________')
         elif decision1 == '2':
-            print('Handling MAU')
+            print('Handling MAU\n'
+                  '____________________')
         else:
-            print('Handling both DAU and MAU')
+            print('Handling both DAU and MAU\n'
+                  '____________________________')
     except NameError:
         while y == 1:
             decision1 = input('What files are we handling?\n'
@@ -75,7 +78,7 @@ def data_end_use():
                           '1) Dump into a csv\n'
                           '2) Dump into a JSON\n'
                           '3) Create a Plotly graph\n'
-                          '4) Create a graph in Python\n')
+                          '4) Nothing\n')
         if decision2 == '1':
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
@@ -151,37 +154,42 @@ def data_end_use():
                 x = 2
 
         elif decision2 == '4':
-            awkward = input('This is not set up yet, would you like to do something else?\n'
-                            'Y or N:')
-            if awkward == 'Y':
-                x = 1
-            else:
-                break
-            # if decision1 == '1':
-            #     dau_df = pd.read_pickle('DAU.pickle')
-            #     dau_df.to_json('DAU.json')
-            # elif decision1 == '2':
-            #     mau_df = pd.read_pickle('MAU.pickle')
-            #     mau_df.to_json('MAU.json')
-            # elif decision1 == '3':
-            #     mau_df = pd.read_pickle('MAU.pickle')
-            #     dau_df = pd.read_pickle('DAU.pickle')
-            #     mau_dau_df = dau_df.join(mau_df)
-            #
-            #     division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
-            #     df = pd.DataFrame(division)
-            #     df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
-            #     main_df = mau_dau_df.join(df)
-            #     main_df.to_json('MAU_DAU.json')
-            # multiple_things = input('\nWould you like to do anything else with the data?\n'
-            #                         'Y = 1/N = 2:')
-            # if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
-            #     x = 1
-            # else:
-            #     x = 2
+            break
 
         else:
             print("That wasn't a viable option, please try again")
+
+
+def python_graph():
+    if decision1 == '1':
+        dau_df = pd.read_pickle('DAU.pickle')
+        dau_df['DAU'].plot()
+        plt.legend(loc='best')
+        plt.title('DAU')
+        fig = plt.gcf()
+        fig.set_size_inches(15, 10, forward=True)
+        plt.show()
+    elif decision1 == '2':
+        mau_df = pd.read_pickle('MAU.pickle')
+        mau_df['MAU'].plot()
+        plt.legend(loc='best')
+        plt.title('MAU')
+        fig = plt.gcf()
+        fig.set_size_inches(15, 10, forward=True)
+        plt.show()
+    elif decision1 == '3':
+        mau_df = pd.read_pickle('MAU.pickle')
+        dau_df = pd.read_pickle('DAU.pickle')
+        mau_dau_df = dau_df.join(mau_df)
+
+        division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
+        df = pd.DataFrame(division)
+        df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+        main_df = mau_dau_df.join(df)
+        main_df.plot(secondary_y=['DAU/MAU %'])
+        fig = plt.gcf()
+        fig.set_size_inches(15, 10, forward=True)
+        plt.show()
 
 
 def end_date_query():
