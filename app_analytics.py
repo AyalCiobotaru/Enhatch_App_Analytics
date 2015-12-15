@@ -68,7 +68,7 @@ def data_end_use():
         print('Handling both DAU and MAU\n'
               '____________________________')
     x = 1
-    while x == 1: # error checking
+    while x == 1:  # error checking
         decision2 = input('What would you like to do with the information acquired?\n'
                           '1) Dump into a csv\n'
                           '2) Dump into a JSON\n'
