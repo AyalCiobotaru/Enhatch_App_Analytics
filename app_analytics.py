@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 import datetime as dt
 from math import ceil
+import sys
+import os
 import plotly.plotly as py
 import cufflinks as cl
 
@@ -237,11 +239,11 @@ def python_graph():
         yau_df = pd.read_pickle('YAU.pickle')
         wau_yau_df = wau_df.join(yau_df)
 
-        division = ((wau_yau_df['DAU'] / wau_yau_df['MAU']) * 100)
+        division = ((wau_yau_df['WAU'] / wau_yau_df['YAU']) * 100)
         df = pd.DataFrame(division)
-        df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
+        df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
         main_df = wau_yau_df.join(df)
-        main_df.plot(secondary_y=['DAU/MAU %'])
+        main_df.plot(secondary_y=['WAU/YAU %'])
         fig = plt.gcf()
         fig.set_size_inches(15, 10, forward=True)
         plt.show()
@@ -269,11 +271,29 @@ def data_end_use():
             # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
-                dau_df.to_csv('DAU.csv')
+                new_path = sys.path[0] + '\DAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                dau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
             elif decision1 == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
-                mau_df.to_csv('MAU.csv')
+                new_path = sys.path[0] + '\MAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                mau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
             elif decision1 == '3':
+                wau_df = pd.read_pickle('WAU.pickle')
+                new_path = sys.path[0] + '\WAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                wau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+            elif decision1 == '4':
+                yau_df = pd.read_pickle('YAU.pickle')
+                new_path = sys.path[0] + '\YAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                yau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+            elif decision1 == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
@@ -283,7 +303,23 @@ def data_end_use():
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
-                main_df.to_csv('MAU_DAU.csv')
+                new_path = sys.path[0] + '\DAU_MAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                main_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+            elif decision1 == '6':
+                wau_df = pd.read_pickle('WAU.pickle')
+                yau_df = pd.read_pickle('YAU.pickle')
+                wau_yau_df = wau_df.join(yau_df)
+
+                division = ((wau_yau_df['WAU'] / wau_yau_df['YAU']) * 100)
+                df = pd.DataFrame(division)
+                df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
+                main_df = wau_yau_df.join(df)
+                new_path = sys.path[0] + '\WAU_YAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                main_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
 
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
@@ -296,20 +332,56 @@ def data_end_use():
             # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
-                dau_df.to_json('DAU.json')
+                new_path = sys.path[0] + '\DAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                dau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
             elif decision1 == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
-                mau_df.to_json('MAU.json')
+                new_path = sys.path[0] + '\MAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                mau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
             elif decision1 == '3':
+                wau_df = pd.read_pickle('WAU.pickle')
+                new_path = sys.path[0] + '\WAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                wau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+            elif decision1 == '4':
+                yau_df = pd.read_pickle('YAU.pickle')
+                new_path = sys.path[0] + '\YAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                yau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+            elif decision1 == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
 
+                # creates the MAU/DAU column
                 division = ((mau_dau_df['DAU'] / mau_dau_df['MAU']) * 100)
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
-                main_df.to_json('MAU_DAU.json')
+                new_path = sys.path[0] + '\DAU_MAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                main_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+            elif decision1 == '6':
+                wau_df = pd.read_pickle('WAU.pickle')
+                yau_df = pd.read_pickle('YAU.pickle')
+                wau_yau_df = wau_df.join(yau_df)
+
+                division = ((wau_yau_df['WAU'] / wau_yau_df['YAU']) * 100)
+                df = pd.DataFrame(division)
+                df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
+                main_df = wau_yau_df.join(df)
+                new_path = sys.path[0] + '\WAU_YAU\ '
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                main_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
             if multiple_things == '1' or multiple_things == 'Y' or multiple_things == 'y':
@@ -328,6 +400,12 @@ def data_end_use():
                 mau_df = pd.read_pickle('MAU.pickle')
                 mau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
             elif decision1 == '3':
+                wau_df = pd.read_pickle('WAU.pickle')
+                wau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
+            elif decision1 == '4':
+                yau_df = pd.read_pickle('YAU.pickle')
+                yau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
+            elif decision1 == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
@@ -336,6 +414,16 @@ def data_end_use():
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
+                main_df.iplot(kind='scatter', filename=graph_folder + '/' + graph_name)
+            elif decision1 == '6':
+                wau_df = pd.read_pickle('WAU.pickle')
+                yau_df = pd.read_pickle('YAU.pickle')
+                wau_yau_df = wau_df.join(yau_df)
+
+                division = ((wau_yau_df['WAU'] / wau_yau_df['YAU']) * 100)
+                df = pd.DataFrame(division)
+                df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
+                main_df = wau_yau_df.join(df)
                 main_df.iplot(kind='scatter', filename=graph_folder + '/' + graph_name)
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
