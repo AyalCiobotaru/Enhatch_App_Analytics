@@ -18,7 +18,7 @@ client = KeenClient(
 )
 
 
-company_app_keys = {'enhatch': '118368274437335737698029276469999809095',
+account_app_keys = {'enhatch': '118368274437335737698029276469999809095',
                     'rr Donnelly': '122169787206987846341383818731152558295',
                     'enhatch test': '129690986843314177890874392835790686791',
                     'ge transportation': '161299849888704839492897537232844536620',
@@ -37,7 +37,23 @@ company_app_keys = {'enhatch': '118368274437335737698029276469999809095',
 
 # Function to acuire what the user wants to do
 def user_wants():
-    x = 1
+    y = 1
+    while y == 1:
+        # option to pull multiple companies
+        company_pull = input("Which you like to pull for multiple accounts consecutively?\nY = 1/ N = 2?")
+        global weekends
+        if company_pull == "Y" or company_pull == "y" or company_pull == "1":
+            multiple_companies()
+            x = 2
+            y = 2
+            end_use = False
+        elif company_pull == "N" or company_pull == "n" or company_pull == "2":
+            x = 1
+            y = 2
+            end_use = True
+        else:
+            print("Not a viable option, please try again")
+
     global decision1
     while x == 1:
         decision1 = input('What would you like to do today?\n'
@@ -92,8 +108,35 @@ def user_wants():
 
         else:  # Error checking
             print("Wasn't a viable option, please pick again\n")
-    python_graph()  # Creates the Python Graph
-    data_end_use()  # Takes in a raw input of what the user wants to do with data acquried
+
+    if end_use:
+        python_graph()  # Creates the Python Graph
+        data_end_use()  # Takes in a raw input of what the user wants to do with data acquried
+
+
+# Funtion to pull mutliple companies at the same time
+def multiple_companies():
+    x = 1
+    while x == 1:
+        try:
+            account_amount = int(input("\nHow many accounts would you like to pull?"))
+            x = 2
+        except ValueError:
+            print("That wasn't a number, please enter a number\n")
+    print()
+    amount = 0
+    account_list = []
+    while amount < account_amount:
+        amount += 1
+        account = input('Enter account %s: ' % amount)
+        if account in account_app_keys:
+            account_list.append(account)
+        else:
+            print("That wasn't a viable account, please try again or add to the account dictionary\n")
+            amount -= 1
+
+
+
 
 
 # Function to generate the end date the user specified
@@ -161,7 +204,7 @@ def end_date_query():
         global requested_company
         if question2 == "Y" or question2 == "y" or question2 == "1":
             requested_company = (input('\nWhat company would you like?').lower())
-            if requested_company in company_app_keys:
+            if requested_company in account_app_keys:
                 company_filter = True
                 x = 2
             else:
@@ -172,7 +215,7 @@ def end_date_query():
                 if add_company == 'Y' or add_company == 'y' or add_company == '1':
                     company_name = input('What is the name of the company?')
                     company_key = input('What is the app key for the company?')
-                    company_app_keys[company_name] = company_key
+                    account_app_keys[company_name] = company_key
                     requested_company = company_name
                     company_filter = True
                     x = 2
@@ -271,28 +314,36 @@ def data_end_use():
             # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
-                new_path = sys.path[0] + '\DAU\ '
+                new_path = sys.path[0] + os.sep + 'DAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                dau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+                dau_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                               'If the file name already exists it will overwrite the old file')
+                              + '.csv')
             elif decision1 == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
-                new_path = sys.path[0] + '\MAU\ '
+                new_path = sys.path[0] + os.sep + 'MAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                mau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+                mau_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                               'If the file name already exists it will overwrite the old file')
+                              + '.csv')
             elif decision1 == '3':
                 wau_df = pd.read_pickle('WAU.pickle')
-                new_path = sys.path[0] + '\WAU\ '
+                new_path = sys.path[0] + os.sep + 'WAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                wau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+                wau_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                               'If the file name already exists it will overwrite the old file')
+                              + '.csv')
             elif decision1 == '4':
                 yau_df = pd.read_pickle('YAU.pickle')
-                new_path = sys.path[0] + '\YAU\ '
+                new_path = sys.path[0] + os.sep + 'YAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                yau_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+                yau_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                               'If the file name already exists it will overwrite the old file')
+                              + '.csv')
             elif decision1 == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
@@ -303,10 +354,12 @@ def data_end_use():
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
-                new_path = sys.path[0] + '\DAU_MAU\ '
+                new_path = sys.path[0] + os.sep + 'MAU_DAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                main_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+                main_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                                'If the file name already exists it will overwrite the old file')
+                               + '.csv')
             elif decision1 == '6':
                 wau_df = pd.read_pickle('WAU.pickle')
                 yau_df = pd.read_pickle('YAU.pickle')
@@ -316,10 +369,12 @@ def data_end_use():
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
                 main_df = wau_yau_df.join(df)
-                new_path = sys.path[0] + '\WAU_YAU\ '
+                new_path = sys.path[0] + os.sep + 'WAU_YAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                main_df.to_csv(new_path + input('What would you like to call this file?') + '.csv')
+                main_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                                'If the file name already exists it will overwrite the old file')
+                               + '.csv')
 
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
@@ -332,28 +387,36 @@ def data_end_use():
             # checks to see what information the user wanted
             if decision1 == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
-                new_path = sys.path[0] + '\DAU\ '
+                new_path = sys.path[0] + os.sep + 'DAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                dau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+                dau_df.to_json(new_path + input('What would you like to call this file?\n'
+                                                'If the file name already exists it will overwrite the old file')
+                               + '.json')
             elif decision1 == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
-                new_path = sys.path[0] + '\MAU\ '
+                new_path = sys.path[0] + os.sep + 'MAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                mau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+                mau_df.to_json(new_path + input('What would you like to call this file?\n'
+                                                'If the file name already exists it will overwrite the old file')
+                               + '.json')
             elif decision1 == '3':
                 wau_df = pd.read_pickle('WAU.pickle')
-                new_path = sys.path[0] + '\WAU\ '
+                new_path = sys.path[0] + os.sep + 'WAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                wau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+                wau_df.to_json(new_path + input('What would you like to call this file?\n'
+                                                'If the file name already exists it will overwrite the old file')
+                               + '.json')
             elif decision1 == '4':
                 yau_df = pd.read_pickle('YAU.pickle')
-                new_path = sys.path[0] + '\YAU\ '
+                new_path = sys.path[0] + os.sep + 'YAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                yau_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+                yau_df.to_json(new_path + input('What would you like to call this file?\n'
+                                                'If the file name already exists it will overwrite the old file')
+                               + '.json')
             elif decision1 == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
@@ -364,10 +427,12 @@ def data_end_use():
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
-                new_path = sys.path[0] + '\DAU_MAU\ '
+                new_path = sys.path[0] + os.sep + 'DAU_MAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                main_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+                main_df.to_json(new_path + input('What would you like to call this file?\n'
+                                                 'If the file name already exists it will overwrite the old file')
+                                + '.json')
             elif decision1 == '6':
                 wau_df = pd.read_pickle('WAU.pickle')
                 yau_df = pd.read_pickle('YAU.pickle')
@@ -377,10 +442,12 @@ def data_end_use():
                 df = pd.DataFrame(division)
                 df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
                 main_df = wau_yau_df.join(df)
-                new_path = sys.path[0] + '\WAU_YAU\ '
+                new_path = sys.path[0] + os.sep + 'WAU_YAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
-                main_df.to_json(new_path + input('What would you like to call this file?') + '.json')
+                main_df.to_json(new_path + input('What would you like to call this file?\n'
+                                                 'If the file name already exists it will overwrite the old file')
+                                + '.json')
 
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
@@ -544,7 +611,7 @@ def app_data_daily(month, day, year):
                                                filters=[
                                                    {'operator': 'eq',
                                                     'property_name': 'app_key',
-                                                    'property_value': company_app_keys[requested_company]
+                                                    'property_value': account_app_keys[requested_company]
                                                     }])
             else:
                 app_data = client.count_unique('Page', 'user.pk',
@@ -569,7 +636,7 @@ def app_data_daily(month, day, year):
                                            filters=[
                                                {'operator': 'eq',
                                                 'property_name': 'app_key',
-                                                'property_value': company_app_keys[requested_company]
+                                                'property_value': account_app_keys[requested_company]
                                                 }])
         else:
             app_data = client.count_unique('Page', 'user.pk',
@@ -649,7 +716,7 @@ def app_data_weekly_monthly_yearly(month, day, year, choice):
                                                    filters=[
                                                     {'operator': 'eq',
                                                      'property_name': 'app_key',
-                                                     'property_value': company_app_keys[requested_company]
+                                                     'property_value': account_app_keys[requested_company]
                                                      }])
                 else:
                     app_data = client.count_unique('Page', 'user.pk',
@@ -679,7 +746,7 @@ def app_data_weekly_monthly_yearly(month, day, year, choice):
                                                filters=[
                                                 {'operator': 'eq',
                                                  'property_name': 'app_key',
-                                                 'property_value': company_app_keys[requested_company]
+                                                 'property_value': account_app_keys[requested_company]
                                                  }])
             else:
                 app_data = client.count_unique('Page', 'user.pk',
