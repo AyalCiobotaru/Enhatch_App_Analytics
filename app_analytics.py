@@ -19,7 +19,7 @@ client = KeenClient(
 
 
 account_app_keys = {'enhatch': '118368274437335737698029276469999809095',
-                    'rr Donnelly': '122169787206987846341383818731152558295',
+                    'rr donnelly': '122169787206987846341383818731152558295',
                     'enhatch test': '129690986843314177890874392835790686791',
                     'ge transportation': '161299849888704839492897537232844536620',
                     'sonoma': '181479502579786137791904991511865109911',
@@ -38,12 +38,14 @@ account_app_keys = {'enhatch': '118368274437335737698029276469999809095',
 # Function to acuire what the user wants to do
 def user_wants():
     y = 1
+    x = 1
+    end_use = ""
+    decision1 = ""
     while y == 1:
         # option to pull multiple companies
         company_pull = input("Which you like to pull for multiple accounts consecutively?\nY = 1/ N = 2?")
-        global weekends
         if company_pull == "Y" or company_pull == "y" or company_pull == "1":
-            multiple_companies()
+            multiple_companies(companies=True)
             x = 2
             y = 2
             end_use = False
@@ -53,8 +55,7 @@ def user_wants():
             end_use = True
         else:
             print("Not a viable option, please try again")
-
-    global decision1
+    decision1_list = ["1", "2", "3", "4", "5", "6", "7"]
     while x == 1:
         decision1 = input('What would you like to do today?\n'
                           '1) Find DAU\n'
@@ -64,58 +65,17 @@ def user_wants():
                           '5) Find DAU/MAU\n'
                           '6) Find WAU/YAU\n'
                           '7) Graph, or acquire information from previous pull\n')
-        if decision1 == "1":  # if DAU is chosen, request the end date and then find DAU
-            end_date_query()
-            app_data_daily(month=end_month, day=end_day, year=end_year)
+        if decision1 not in decision1_list:
+            print("That wasn't a viable option, please try again")
+        else:
             x = 2
-
-        elif decision1 == "2":  # if MAU is chosen, request the end date and then find MAU
-            end_date_query()
-            app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year, choice=1)
-            x = 2
-
-        elif decision1 == "3":  # if WAU is chosen, request the end date and then find MAU
-            end_date_query()
-            app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year, choice=2)
-            x = 2
-
-        elif decision1 == "4":  # if YAU is chosen, request the end date and then find MAU
-            end_date_query()
-            app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year, choice=3)
-            x = 2
-
-        elif decision1 == "5":  # if DAU/MAU is chosen, request the end date and then find both
-            end_date_query()
-            app_data_daily(month=end_month, day=end_day, year=end_year)
-            app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year, choice=1)
-            x = 2
-
-        elif decision1 == "6":  # if WAU/YAU is chosen, request the end date and then find both
-            end_date_query()
-            app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year, choice=2)
-            app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year, choice=3)
-            x = 2
-
-        elif decision1 == "7":  # Use previous pull's data
-            decision1 = input('\nWhat information did you use on the last pull?\n'
-                              '1) DAU\n'
-                              '2) MAU\n'
-                              '3) WAU\n'
-                              '4) YAU\n'
-                              '5) Both DAU & MAU\n'
-                              '6) Both WAU & YAU\n')
-            x = 2
-
-        else:  # Error checking
-            print("Wasn't a viable option, please pick again\n")
-
     if end_use:
-        python_graph()  # Creates the Python Graph
-        data_end_use()  # Takes in a raw input of what the user wants to do with data acquried
+        end_date_query(pull_type=decision1)
 
 
 # Funtion to pull mutliple companies at the same time
-def multiple_companies():
+def multiple_companies(companies):
+    account_amount = 0
     x = 1
     while x == 1:
         try:
@@ -134,19 +94,65 @@ def multiple_companies():
         else:
             print("That wasn't a viable account, please try again or add to the account dictionary\n")
             amount -= 1
+    decision1 = input('\nWhat information did you want to pull?\n'
+                      '1) DAU\n'
+                      '2) MAU\n'
+                      '3) WAU\n'
+                      '4) YAU\n'
+                      '5) Both DAU & MAU\n'
+                      '6) Both WAU & YAU\n')
 
+    decision2 = input('What would you like to do with the information acquired?\n'
+                      '1) Dump into a csv\n'
+                      '2) Dump into a JSON\n'
+                      '3) Create a Plotly graph\n'
+                      '4) Nothing\n')
 
+    for account in account_list:
+        x = 1
+        while x == 1:
+            if decision1 == "1":  # if DAU is chosen, request the end date and then find DAU
+                app_data_daily(month=end_month, day=end_day, year=end_year, weekend=None, account=account)
+                x = 2
 
+            elif decision1 == "2":  # if MAU is chosen, request the end date and then find MAU
+                app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year,
+                                               choice=1, weekend=None, account=account)
+                x = 2
 
+            elif decision1 == "3":  # if WAU is chosen, request the end date and then find MAU
+                app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year,
+                                               choice=2, weekend=None, account=account)
+                x = 2
+
+            elif decision1 == "4":  # if YAU is chosen, request the end date and then find MAU
+                app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year,
+                                               choice=3, weekend=None, account=account)
+                x = 2
+
+            elif decision1 == "5":  # if DAU/MAU is chosen, request the end date and then find both
+                app_data_daily(month=end_month, day=end_day, year=end_year, weekend=None, account=None)
+                app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year,
+                                               choice=1, weekend=None, account=account)
+                x = 2
+
+            elif decision1 == "6":  # if WAU/YAU is chosen, request the end date and then find both
+                app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year,
+                                               choice=2, weekend=None, account=account)
+                app_data_weekly_monthly_yearly(month=end_month, day=end_day, year=end_year,
+                                               choice=3, weekend=None, account=account)
+            else:  # Error checking
+                print("Wasn't a viable option, please pick again\n")
+    
 
 # Function to generate the end date the user specified
-def end_date_query():
+def end_date_query(pull_type):
+    end_day = ""
+    end_month = ""
+    end_year = ""
     x = 1
     while x == 1:
         print('Specify query end date\n-------------------------')
-        global end_month
-        global end_day
-        global end_year
         try:
             end_date_raw = input("\nWhat date would you like the query to end?\n"
                                  "Please put it in format MM/DD/YYYY:\n")
@@ -157,7 +163,7 @@ def end_date_query():
             x = 2
         except ValueError:
             print("That was incorrect format, please try again\n")
-
+    query_size = 0
     x = 1
     while x == 1:  # error checking
         question = input("\nWould you like to:\n"
@@ -165,7 +171,6 @@ def end_date_query():
                          "2)Pick a specific date in the past to start?\n"
                          "1 or 2?:")
         if question == '1':  # goes a set number of days back
-            global query_size
             query_size = int(input("\nHow many days do you want in this query?")) + 1
             x = 2
         elif question == '2':  # finds a date in the past and then gets the query_size
@@ -183,11 +188,11 @@ def end_date_query():
                 print("that was incorrect format, please try again\n")
         else:
             print("That wasn't a viable option, please try again and pick 1 or 2")
+    weekends = False
     x = 1
     while x == 1:
         # option to exclude weekends
         question2 = input("\nWould you like to exclude weekends?\nY = 1/N = 2?:")
-        global weekends
         if question2 == "Y" or question2 == "y" or question2 == "1":
             weekends = False
             x = 2
@@ -197,42 +202,94 @@ def end_date_query():
         else:
             print("Not a viable option, please try again")
     x = 1
+    requested_account = ""
     while x == 1:
         # option to filter by company
         question2 = input("\nWould you like to filter by company?\nY = 1/N = 2?:")
-        global company_filter
-        global requested_company
         if question2 == "Y" or question2 == "y" or question2 == "1":
-            requested_company = (input('\nWhat company would you like?').lower())
-            if requested_company in account_app_keys:
-                company_filter = True
+            requested_account = (input('\nWhat company would you like?').lower())
+            if requested_account in account_app_keys:
                 x = 2
             else:
-                add_company = input("\nThat company isn't valid check the spelling.\n"
+                add_account = input("\nThat account isn't valid check the spelling.\n"
                                     "If the spelling is correct, would you like to add it?\n"
                                     "If it isn't select option 2 and restart\n"
                                     "Y = 1/ N = 2?:")
-                if add_company == 'Y' or add_company == 'y' or add_company == '1':
-                    company_name = input('What is the name of the company?')
-                    company_key = input('What is the app key for the company?')
-                    account_app_keys[company_name] = company_key
-                    requested_company = company_name
-                    company_filter = True
+                if add_account == 'Y' or add_account == 'y' or add_account == '1':
+                    account_name = input('What is the name of the account?')
+                    account_key = input('What is the app key for the account?')
+                    account_app_keys[account_name] = account_key
+                    requested_account = account_name
                     x = 2
-                if add_company == 'N' or add_company == 'n' or add_company == '2':
+                if add_account == 'N' or add_account == 'n' or add_account == '2':
                     x = 1
         elif question2 == "N" or question2 == "n" or question2 == "2":
-            company_filter = False
             x = 2
         else:
             print("Not a viable option, please try again")
+    what_to_pull(account=requested_account, 
+                 query_end_day=end_day, query_end_month=end_month, query_end_year=end_year, 
+                 weekend=weekends, pull_type=pull_type, query_size=query_size)
+
+
+# Function to run the pulls
+def what_to_pull(account, query_end_day, query_end_month, query_end_year, weekend, pull_type, query_size):
+    x = 1
+    while x == 1:
+        if pull_type == "1":  # if DAU is chosen, request the end date and then find DAU
+            app_data_daily(month=query_end_month, day=query_end_day, year=query_end_year, weekend=weekend,
+                           account=account, query_size=query_size)
+            x = 2
+
+        elif pull_type == "2":  # if MAU is chosen, request the end date and then find MAU
+            app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
+                                           choice=1, weekend=weekend, account=account, query_size=query_size)
+            x = 2
+
+        elif pull_type == "3":  # if WAU is chosen, request the end date and then find MAU
+            app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
+                                           choice=2, weekend=weekend, account=account, query_size=query_size)
+            x = 2
+
+        elif pull_type == "4":  # if YAU is chosen, request the end date and then find MAU
+            app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
+                                           choice=3, weekend=weekend, account=account, query_size=query_size)
+            x = 2
+
+        elif pull_type == "5":  # if DAU/MAU is chosen, request the end date and then find both
+            app_data_daily(month=query_end_month, day=query_end_day, year=query_end_year, weekend=weekend,
+                           account=account, query_size=query_size)
+            app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
+                                           choice=1, weekend=weekend, account=account, query_size=query_size)
+            x = 2
+
+        elif pull_type == "6":  # if WAU/YAU is chosen, request the end date and then find both
+            app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
+                                           choice=2, weekend=weekend, account=account, query_size=query_size)
+            app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
+                                           choice=3, weekend=weekend, account=account, query_size=query_size)
+
+        elif pull_type == "7":  # Use previous pull's data
+            pull_type = input('\nWhat information did you use on the last pull?\n'
+                              '1) DAU\n'
+                              '2) MAU\n'
+                              '3) WAU\n'
+                              '4) YAU\n'
+                              '5) Both DAU & MAU\n'
+                              '6) Both WAU & YAU\n')
+            x = 2
+        else:  # Error checking
+            print("Wasn't a viable option, please pick again\n")
+
+        python_graph(pull_type=pull_type)  # Creates the Python Graph
+        data_end_use(pull_type=pull_type)  # Takes in a raw input of what the user wants to do with data acquried
 
 
 # Functino to create the python graph after each pull of data
-def python_graph():
+def python_graph(pull_type):
     style.use('bmh')
     # checks to see what information the user wanted
-    if decision1 == '1':
+    if pull_type == '1':
         dau_df = pd.read_pickle('DAU.pickle')
         dau_df['DAU'].plot()
         plt.legend(loc='best')
@@ -240,7 +297,7 @@ def python_graph():
         fig = plt.gcf()
         fig.set_size_inches(15, 10, forward=True)
         plt.show()
-    elif decision1 == '2':
+    elif pull_type == '2':
         mau_df = pd.read_pickle('MAU.pickle')
         mau_df['MAU'].plot()
         plt.legend(loc='best')
@@ -248,7 +305,7 @@ def python_graph():
         fig = plt.gcf()
         fig.set_size_inches(15, 10, forward=True)
         plt.show()
-    elif decision1 == '3':
+    elif pull_type == '3':
         wau_df = pd.read_pickle('WAU.pickle')
         wau_df['WAU'].plot()
         plt.legend(loc='best')
@@ -256,7 +313,7 @@ def python_graph():
         fig = plt.gcf()
         fig.set_size_inches(15, 10, forward=True)
         plt.show()
-    elif decision1 == '4':
+    elif pull_type == '4':
         yau_df = pd.read_pickle('YAU.pickle')
         yau_df['YAU'].plot()
         plt.legend(loc='best')
@@ -264,7 +321,7 @@ def python_graph():
         fig = plt.gcf()
         fig.set_size_inches(15, 10, forward=True)
         plt.show()
-    elif decision1 == '5':
+    elif pull_type == '5':
         mau_df = pd.read_pickle('MAU.pickle')
         dau_df = pd.read_pickle('DAU.pickle')
         mau_dau_df = dau_df.join(mau_df)
@@ -277,7 +334,7 @@ def python_graph():
         fig = plt.gcf()
         fig.set_size_inches(15, 10, forward=True)
         plt.show()
-    elif decision1 == '6':
+    elif pull_type == '6':
         wau_df = pd.read_pickle('WAU.pickle')
         yau_df = pd.read_pickle('YAU.pickle')
         wau_yau_df = wau_df.join(yau_df)
@@ -293,11 +350,11 @@ def python_graph():
 
 
 # Function to acquire what the user wants to do with the new data acquired
-def data_end_use():
-    if decision1 == '1':
+def data_end_use(pull_type):
+    if pull_type == '1':
         print('Handling DAU\n'
               '____________________')
-    elif decision1 == '2':
+    elif pull_type == '2':
         print('Handling MAU\n'
               '____________________')
     else:
@@ -305,46 +362,47 @@ def data_end_use():
               '____________________________')
     x = 1
     while x == 1:  # error checking
-        decision2 = input('What would you like to do with the information acquired?\n'
-                          '1) Dump into a csv\n'
-                          '2) Dump into a JSON\n'
-                          '3) Create a Plotly graph\n'
-                          '4) Nothing\n')
+        if decision2 is None:
+            decision2 = input('What would you like to do with the information acquired?\n'
+                              '1) Dump into a csv\n'
+                              '2) Dump into a JSON\n'
+                              '3) Create a Plotly graph\n'
+                              '4) Nothing\n')
         if decision2 == '1':  # dumps into a csv
             # checks to see what information the user wanted
-            if decision1 == '1':
+            if pull_type == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
                 new_path = sys.path[0] + os.sep + 'DAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 dau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                               'If the file name already exists it will overwrite the old file')
-                              + '.csv')
-            elif decision1 == '2':
+                                               'If the file name already exists it will overwrite the old file') +
+                              '.csv')
+            elif pull_type == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
                 new_path = sys.path[0] + os.sep + 'MAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 mau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                               'If the file name already exists it will overwrite the old file')
-                              + '.csv')
-            elif decision1 == '3':
+                                               'If the file name already exists it will overwrite the old file') +
+                              '.csv')
+            elif pull_type == '3':
                 wau_df = pd.read_pickle('WAU.pickle')
                 new_path = sys.path[0] + os.sep + 'WAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 wau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                               'If the file name already exists it will overwrite the old file')
-                              + '.csv')
-            elif decision1 == '4':
+                                               'If the file name already exists it will overwrite the old file') +
+                              '.csv')
+            elif pull_type == '4':
                 yau_df = pd.read_pickle('YAU.pickle')
                 new_path = sys.path[0] + os.sep + 'YAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 yau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                               'If the file name already exists it will overwrite the old file')
-                              + '.csv')
-            elif decision1 == '5':
+                                               'If the file name already exists it will overwrite the old file') +
+                              '.csv')
+            elif pull_type == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
@@ -358,9 +416,9 @@ def data_end_use():
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 main_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                'If the file name already exists it will overwrite the old file')
-                               + '.csv')
-            elif decision1 == '6':
+                                                'If the file name already exists it will overwrite the old file') +
+                               '.csv')
+            elif pull_type == '6':
                 wau_df = pd.read_pickle('WAU.pickle')
                 yau_df = pd.read_pickle('YAU.pickle')
                 wau_yau_df = wau_df.join(yau_df)
@@ -373,8 +431,8 @@ def data_end_use():
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 main_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                'If the file name already exists it will overwrite the old file')
-                               + '.csv')
+                                                'If the file name already exists it will overwrite the old file') +
+                               '.csv')
 
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
@@ -385,39 +443,40 @@ def data_end_use():
 
         elif decision2 == '2':  # dumps into a JSON
             # checks to see what information the user wanted
-            if decision1 == '1':
+            if pull_type == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
                 new_path = sys.path[0] + os.sep + 'DAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 dau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                'If the file name already exists it will overwrite the old file')
-                               + '.json')
-            elif decision1 == '2':
+                                                'If the file name already exists it will overwrite the old file') +
+                               '.json')
+
+            elif pull_type == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
                 new_path = sys.path[0] + os.sep + 'MAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 mau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                'If the file name already exists it will overwrite the old file')
-                               + '.json')
-            elif decision1 == '3':
+                                                'If the file name already exists it will overwrite the old file') +
+                               '.json')
+            elif pull_type == '3':
                 wau_df = pd.read_pickle('WAU.pickle')
                 new_path = sys.path[0] + os.sep + 'WAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 wau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                'If the file name already exists it will overwrite the old file')
-                               + '.json')
-            elif decision1 == '4':
+                                                'If the file name already exists it will overwrite the old file') +
+                               '.json')
+            elif pull_type == '4':
                 yau_df = pd.read_pickle('YAU.pickle')
                 new_path = sys.path[0] + os.sep + 'YAU' + os.sep
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 yau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                'If the file name already exists it will overwrite the old file')
-                               + '.json')
-            elif decision1 == '5':
+                                                'If the file name already exists it will overwrite the old file') +
+                               '.json')
+            elif pull_type == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
@@ -431,9 +490,9 @@ def data_end_use():
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 main_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                 'If the file name already exists it will overwrite the old file')
-                                + '.json')
-            elif decision1 == '6':
+                                                 'If the file name already exists it will overwrite the old file') +
+                                '.json')
+            elif pull_type == '6':
                 wau_df = pd.read_pickle('WAU.pickle')
                 yau_df = pd.read_pickle('YAU.pickle')
                 wau_yau_df = wau_df.join(yau_df)
@@ -446,8 +505,8 @@ def data_end_use():
                 if not os.path.exists(new_path):
                     os.makedirs(new_path)
                 main_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                 'If the file name already exists it will overwrite the old file')
-                                + '.json')
+                                                 'If the file name already exists it will overwrite the old file') +
+                                '.json')
 
             multiple_things = input('\nWould you like to do anything else with the data?\n'
                                     'Y = 1/N = 2:')
@@ -460,19 +519,19 @@ def data_end_use():
             graph_name = input('\nWhat would you like to name the graph?\n')
             graph_folder = input('\nWhat folder would you like to put the graph in?\n')
             # checks to see what information the user wanted
-            if decision1 == '1':
+            if pull_type == '1':
                 dau_df = pd.read_pickle('DAU.pickle')
                 dau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
-            elif decision1 == '2':
+            elif pull_type == '2':
                 mau_df = pd.read_pickle('MAU.pickle')
                 mau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
-            elif decision1 == '3':
+            elif pull_type == '3':
                 wau_df = pd.read_pickle('WAU.pickle')
                 wau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
-            elif decision1 == '4':
+            elif pull_type == '4':
                 yau_df = pd.read_pickle('YAU.pickle')
                 yau_df.iplot(kind='scatter', filename=graph_folder + graph_name)
-            elif decision1 == '5':
+            elif pull_type == '5':
                 mau_df = pd.read_pickle('MAU.pickle')
                 dau_df = pd.read_pickle('DAU.pickle')
                 mau_dau_df = dau_df.join(mau_df)
@@ -482,7 +541,7 @@ def data_end_use():
                 df.rename(columns={0: 'DAU/MAU %'}, inplace=True)
                 main_df = mau_dau_df.join(df)
                 main_df.iplot(kind='scatter', filename=graph_folder + '/' + graph_name)
-            elif decision1 == '6':
+            elif pull_type == '6':
                 wau_df = pd.read_pickle('WAU.pickle')
                 yau_df = pd.read_pickle('YAU.pickle')
                 wau_yau_df = wau_df.join(yau_df)
@@ -507,8 +566,8 @@ def data_end_use():
 
 
 # Function to generate the DAU query
-def daily_query_start(day, month, year):
-    if not weekends:
+def daily_query_start(day, month, year, weekend, query_size):
+    if not weekend:
         start_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
         num_weeks = ceil(query_size / 7)
         # adds one extra week if the remainder is 0 or the user will get one week short
@@ -598,12 +657,12 @@ def extract_date_daily(raw_data):
 
 
 # Function that actually pulls the daily data from Keen
-def app_data_daily(month, day, year):
+def app_data_daily(month, day, year, weekend, account, query_size):
     # process that breaks up the daily query into a bunch of little queries that excludes weekends
-    if not weekends:
+    if not weekend:
         temp_df = pd.DataFrame()
-        for item in daily_query_start(day, month, year):
-            if company_filter:
+        for item in daily_query_start(day=day, month=month, year=year, weekend=weekend, query_size=query_size):
+            if account != "":
                 app_data = client.count_unique('Page', 'user.pk',
                                                timeframe=item,
                                                timezone=5,
@@ -611,7 +670,7 @@ def app_data_daily(month, day, year):
                                                filters=[
                                                    {'operator': 'eq',
                                                     'property_name': 'app_key',
-                                                    'property_value': account_app_keys[requested_company]
+                                                    'property_value': account_app_keys[account]
                                                     }])
             else:
                 app_data = client.count_unique('Page', 'user.pk',
@@ -628,19 +687,21 @@ def app_data_daily(month, day, year):
     # if the user wants to INCLUDE weekends, the above is skipped and this is run
     else:
         temp_df = pd.DataFrame()
-        if company_filter:
+        if account != "":
             app_data = client.count_unique('Page', 'user.pk',
-                                           timeframe=daily_query_start(day, month, year),
+                                           timeframe=daily_query_start(day=day, month=month, year=year, 
+                                                                       weekend=weekend, query_size=query_size),
                                            timezone=5,
                                            interval='daily',
                                            filters=[
                                                {'operator': 'eq',
                                                 'property_name': 'app_key',
-                                                'property_value': account_app_keys[requested_company]
+                                                'property_value': account_app_keys[account]
                                                 }])
         else:
             app_data = client.count_unique('Page', 'user.pk',
-                                           timeframe=daily_query_start(day, month, year),
+                                           timeframe=daily_query_start(day=day, month=month, year=year, 
+                                                                       weekend=weekend, query_size=query_size),
                                            timezone=5,
                                            interval='daily')
         extract_date_daily(app_data)
@@ -657,7 +718,7 @@ def app_data_daily(month, day, year):
 
 
 # Function to generate the WAU query
-def weekly_query_start(day, month, year):
+def weekly_query_start(day, month, year, query_size):
     weekly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size + 6)
     weekly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
     query = {'end': str(weekly_end_day), 'start': str(weekly_start_day)}
@@ -665,14 +726,14 @@ def weekly_query_start(day, month, year):
 
 
 # Function to generate the MAU query
-def monthly_query_start(day, month, year):
+def monthly_query_start(day, month, year, query_size):
     monthly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size + 30)
     monthly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
     query = {'end': str(monthly_end_day), 'start': str(monthly_start_day)}
     return query
 
 
-def yearly_query_start(day, month, year):
+def yearly_query_start(day, month, year, query_size):
     yearly_start_day = dt.datetime(year, month, day) - dt.timedelta(query_size + 364)
     yearly_end_day = dt.datetime(year, month, day) - dt.timedelta(query_size - 1)
     query = {'end': str(yearly_end_day), 'start': str(yearly_start_day)}
@@ -680,7 +741,7 @@ def yearly_query_start(day, month, year):
 
 
 # Function that actually pulls the monthly data from Keen
-def app_data_weekly_monthly_yearly(month, day, year, choice):
+def app_data_weekly_monthly_yearly(month, day, year, choice, weekend, account, query_size):
     # this query might be able to be modified
     # it takes the first day specified in the query, subtracts thirty and puts the monthly data for that date.
     # then goes on to the next day and does the same thing for a rolling thirty feel.
@@ -691,14 +752,14 @@ def app_data_weekly_monthly_yearly(month, day, year, choice):
     temp_df = pd.DataFrame  # empty dataframe to fill
     while x < query_size:
         if choice == 1:
-            query = monthly_query_start(day1, month1, year1)
+            query = monthly_query_start(day1, month1, year1, query_size=query_size)
         elif choice == 2:
-            query = weekly_query_start(day1, month1, year1)
+            query = weekly_query_start(day1, month1, year1, query_size=query_size)
         else:
-            query = yearly_query_start(day1, month1, year1)
+            query = yearly_query_start(day1, month1, year1, query_size=query_size)
 
         # process to exclude weekends
-        if not weekends:
+        if not weekend:
             if (dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1)).weekday() == 5 or \
                (dt.datetime(year1, month1, day1) - dt.timedelta(query_size-1)).weekday() == 6:
                 new_date = (dt.datetime(year1, month1, day1) + dt.timedelta(1))
@@ -709,14 +770,14 @@ def app_data_weekly_monthly_yearly(month, day, year, choice):
                 continue
             # if it isn't a weekend add it to temp_df
             else:
-                if company_filter:
+                if account != "":
                     app_data = client.count_unique('Page', 'user.pk',
                                                    timeframe=query,
                                                    timezone=5,
                                                    filters=[
                                                     {'operator': 'eq',
                                                      'property_name': 'app_key',
-                                                     'property_value': account_app_keys[requested_company]
+                                                     'property_value': account_app_keys[account]
                                                      }])
                 else:
                     app_data = client.count_unique('Page', 'user.pk',
@@ -739,14 +800,14 @@ def app_data_weekly_monthly_yearly(month, day, year, choice):
 
         # if user wants to include weekends, above process is skipped
         else:
-            if company_filter:
+            if account != "":
                 app_data = client.count_unique('Page', 'user.pk',
                                                timeframe=query,
                                                timezone=5,
                                                filters=[
                                                 {'operator': 'eq',
                                                  'property_name': 'app_key',
-                                                 'property_value': account_app_keys[requested_company]
+                                                 'property_value': account_app_keys[account]
                                                  }])
             else:
                 app_data = client.count_unique('Page', 'user.pk',
