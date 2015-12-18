@@ -112,7 +112,7 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     dau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                   'If the file name already exists it will overwrite the old file') +
+                                                   'If the file name already exists it will overwrite the old file. ') +
                                   '.csv')
                 else:
                     dau_df.to_csv(new_path + account + '_' + 'DAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -125,7 +125,7 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     mau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                   'If the file name already exists it will overwrite the old file') +
+                                                   'If the file name already exists it will overwrite the old file. ') +
                                   '.csv')
                 else:
                     mau_df.to_csv(new_path + account + '_' + 'MAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -137,7 +137,7 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     wau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                   'If the file name already exists it will overwrite the old file') +
+                                                   'If the file name already exists it will overwrite the old file. ') +
                                   '.csv')
                 else:
                     wau_df.to_csv(new_path + account + '_' + 'WAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -149,7 +149,7 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     yau_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                   'If the file name already exists it will overwrite the old file') +
+                                                   'If the file name already exists it will overwrite the old file. ') +
                                   '.csv')
                 else:
                     yau_df.to_csv(new_path + account + '_' + 'YAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -169,7 +169,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     main_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                    'If the file name already exists it will overwrite the old file') +
+                                                    'If the file name already exists it will overwrite the '
+                                                    'old file. ') +
                                    '.csv')
                 else:
                     main_df.to_csv(new_path + account + '_' + 'DAU_MAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -188,7 +189,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     main_df.to_csv(new_path + input('What would you like to call this file?\n'
-                                                    'If the file name already exists it will overwrite the old file') +
+                                                    'If the file name already exists it will overwrite the '
+                                                    'old file. ') +
                                    '.csv')
                 else:
                     main_df.to_csv(new_path + account + '_' + 'WAU/YAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -212,7 +214,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     dau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                    'If the file name already exists it will overwrite the old file') +
+                                                    'If the file name already exists it will overwrite '
+                                                    'the old file. ') +
                                    '.json')
                 else:
                     dau_df.to_csv(new_path + account + '_' + 'DAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -225,7 +228,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     mau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                    'If the file name already exists it will overwrite the old file') +
+                                                    'If the file name already exists it will overwrite the '
+                                                    'old file. ') +
                                    '.json')
                 else:
                     mau_df.to_csv(new_path + account + '_' + 'MAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -237,7 +241,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     wau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                    'If the file name already exists it will overwrite the old file') +
+                                                    'If the file name already exists it will overwrite the '
+                                                    'old file. ') +
                                    '.json')
                 else:
                     wau_df.to_csv(new_path + account + '_' + 'WAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -249,7 +254,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     yau_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                    'If the file name already exists it will overwrite the old file') +
+                                                    'If the file name already exists it will overwrite the '
+                                                    'old file. ') +
                                    '.json')
                 else:
                     yau_df.to_csv(new_path + account + '_' + 'YAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -269,7 +275,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     main_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                     'If the file name already exists it will overwrite the old file') +
+                                                     'If the file name already exists it will overwrite the '
+                                                     'old file. ') +
                                     '.json')
                 else:
                     main_df.to_csv(new_path + account + '_' + 'MAU/DAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
@@ -288,7 +295,8 @@ def data_end_use(pull_type, data_use, account):
                     os.makedirs(new_path)
                 if data_use is None:
                     main_df.to_json(new_path + input('What would you like to call this file?\n'
-                                                     'If the file name already exists it will overwrite the old file') +
+                                                     'If the file name already exists it will overwrite the '
+                                                     'old file. ') +
                                     '.json')
                 else:
                     main_df.to_csv(new_path + account + '_' + 'WAU/YAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
