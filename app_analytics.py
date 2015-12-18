@@ -182,32 +182,28 @@ def multiple_companies(query_end_day, query_end_month, query_end_year, weekend, 
                 app_data_daily(month=query_end_month, day=query_end_day, year=query_end_year, weekend=weekend,
                                account=account, query_size=query_size)
                 data_end_use(pull_type=decision1, data_use=decision2, account=account)
-                app_opened(account)
-                print("Total Invites sent to date: %s" % account_invites)
+                app_opened(account, invites=account_invites)
                 x = 2
 
             elif decision1 == "2":  # if MAU is chosen, request the end date and then find MAU
                 app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                                choice=1, weekend=weekend, account=account, query_size=query_size)
                 data_end_use(pull_type=decision1, data_use=decision2, account=account)
-                app_opened(account)
-                print("Total Invites sent to date: %s" % account_invites)
+                app_opened(account, invites=account_invites)
                 x = 2
 
             elif decision1 == "3":  # if WAU is chosen, request the end date and then find MAU
                 app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                                choice=2, weekend=weekend, account=account, query_size=query_size)
                 data_end_use(pull_type=decision1, data_use=decision2, account=account)
-                app_opened(account)
-                print("Total Invites sent to date: %s" % account_invites)
+                app_opened(account, invites=account_invites)
                 x = 2
 
             elif decision1 == "4":  # if YAU is chosen, request the end date and then find MAU
                 app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                                choice=3, weekend=weekend, account=account, query_size=query_size)
                 data_end_use(pull_type=decision1, data_use=decision2, account=account)
-                app_opened(account)
-                print("Total Invites sent to date: %s" % account_invites)
+                app_opened(account, invites=account_invites)
                 x = 2
 
             elif decision1 == "5":  # if DAU/MAU is chosen, request the end date and then find both
@@ -216,8 +212,7 @@ def multiple_companies(query_end_day, query_end_month, query_end_year, weekend, 
                 app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                                choice=1, weekend=weekend, account=account, query_size=query_size)
                 data_end_use(pull_type=decision1, data_use=decision2, account=account)
-                app_opened(account)
-                print("Total Invites sent to date: %s" % account_invites)
+                app_opened(account, invites=account_invites)
                 x = 2
 
             elif decision1 == "6":  # if WAU/YAU is chosen, request the end date and then find both
@@ -226,8 +221,7 @@ def multiple_companies(query_end_day, query_end_month, query_end_year, weekend, 
                 app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                                choice=3, weekend=weekend, account=account, query_size=query_size)
                 data_end_use(pull_type=decision1, data_use=decision2, account=account)
-                app_opened(account)
-                print("Total Invites sent to date: %s" % account_invites)
+                app_opened(account, invites=account_invites)
                 x = 2
             else:  # Error checking
                 print("Wasn't a viable option, please pick again\n")
@@ -240,29 +234,25 @@ def what_to_pull(account, account_size, query_end_day, query_end_month, query_en
         if pull_type == "1":  # if DAU is chosen, request the end date and then find DAU
             app_data_daily(month=query_end_month, day=query_end_day, year=query_end_year, weekend=weekend,
                            account=account, query_size=query_size)
-            app_opened(account)
-            print("Total Invites sent to date: %s" % account_size)
+            app_opened(account, invites=account_size)
             x = 2
 
         elif pull_type == "2":  # if MAU is chosen, request the end date and then find MAU
             app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                            choice=1, weekend=weekend, account=account, query_size=query_size)
-            app_opened(account)
-            print("Total Invites sent to date: %s" % account_size)
+            app_opened(account, invites=account_size)
             x = 2
 
         elif pull_type == "3":  # if WAU is chosen, request the end date and then find MAU
             app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                            choice=2, weekend=weekend, account=account, query_size=query_size)
-            app_opened(account)
-            print("Total Invites sent to date: %s" % account_size)
+            app_opened(account, invites=account_size)
             x = 2
 
         elif pull_type == "4":  # if YAU is chosen, request the end date and then find MAU
             app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                            choice=3, weekend=weekend, account=account, query_size=query_size)
-            app_opened(account)
-            print("Total Invites sent to date: %s" % account_size)
+            app_opened(account, invites=account_size)
             x = 2
 
         elif pull_type == "5":  # if DAU/MAU is chosen, request the end date and then find both
@@ -270,8 +260,7 @@ def what_to_pull(account, account_size, query_end_day, query_end_month, query_en
                            account=account, query_size=query_size)
             app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                            choice=1, weekend=weekend, account=account, query_size=query_size)
-            app_opened(account)
-            print("Total Invites sent to date: %s" % account_size)
+            app_opened(account, invites=account_size)
             x = 2
 
         elif pull_type == "6":  # if WAU/YAU is chosen, request the end date and then find both
@@ -279,8 +268,7 @@ def what_to_pull(account, account_size, query_end_day, query_end_month, query_en
                                            choice=2, weekend=weekend, account=account, query_size=query_size)
             app_data_weekly_monthly_yearly(month=query_end_month, day=query_end_day, year=query_end_year,
                                            choice=3, weekend=weekend, account=account, query_size=query_size)
-            app_opened(account)
-            print("Total Invites sent to date: %s" % account_size)
+            app_opened(account, invites=account_size)
             x = 2
 
         elif pull_type == "7":  # Use previous pull's data
