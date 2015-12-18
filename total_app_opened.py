@@ -1,4 +1,3 @@
-import pandas as pd
 import datetime as dt
 from client_and_app_keys import client, account_app_keys
 
