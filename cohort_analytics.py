@@ -71,7 +71,7 @@ def cohort_analysis(raw_data):
 
     plt.figure(figsize=(12, 8))
     plt.title('Cohorts: User Retention')
-    sns.heatmap(user_retention.T, mask=user_retention.T.isnull(), annot=True, fmt='.0%', cmap="Greens")
+    sns.heatmap(user_retention.T, mask=user_retention.T.isnull(), annot=True, fmt='.0%', cmap="YlGn")
     plt.show()
 
 
