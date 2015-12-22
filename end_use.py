@@ -93,6 +93,9 @@ def data_end_use(pull_type, data_use, account):
         elif pull_type == '6':
             print('Handling WAU/YAU\n'
                   '____________________________')
+        elif pull_type == '7':
+            print('Handling Cohort Data\n'
+                  '____________________________')
     x = 1
     while x == 1:  # error checking
         if data_use is None:
@@ -195,6 +198,18 @@ def data_end_use(pull_type, data_use, account):
                 else:
                     main_df.to_csv(new_path + account + '_' + 'WAU/YAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
                                    '.csv')
+            elif pull_type == '7':
+                cohort_df = pd.read_pickle('user_retention.pickle')
+                new_path = sys.path[0] + os.sep + 'Cohort' + os.sep
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                if data_use is None:
+                    cohort_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                                      'If the file name already exists it will overwrite the old file.'
+                                                      ' ') + '.csv')
+                else:
+                    cohort_df.to_csv(new_path + account + '_' + 'cohort' + '_' + dt.datetime.now()
+                                     .strftime('%m-%d-%Y') + '.csv')
             if data_use is None:
                 multiple_things = input('\nWould you like to do anything else with the data?\n'
                                         'Y = 1/N = 2:')
@@ -301,6 +316,18 @@ def data_end_use(pull_type, data_use, account):
                 else:
                     main_df.to_csv(new_path + account + '_' + 'WAU/YAU' + '_' + dt.datetime.now().strftime('%m-%d-%Y') +
                                    '.json')
+            elif pull_type == '7':
+                cohort_df = pd.read_pickle('user_retention.pickle')
+                new_path = sys.path[0] + os.sep + 'Cohort' + os.sep
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                if data_use is None:
+                    cohort_df.to_csv(new_path + input('What would you like to call this file?\n'
+                                                      'If the file name already exists it will overwrite the old file.'
+                                                      ' ') + '.json')
+                else:
+                    cohort_df.to_csv(new_path + account + '_' + 'cohort' + '_' + dt.datetime.now()
+                                     .strftime('%m-%d-%Y') + '.json')
             if data_use is None:
                 multiple_things = input('\nWould you like to do anything else with the data?\n'
                                         'Y = 1/N = 2:')
@@ -352,6 +379,7 @@ def data_end_use(pull_type, data_use, account):
                 df.rename(columns={0: 'WAU/YAU %'}, inplace=True)
                 main_df = wau_yau_df.join(df)
                 main_df.iplot(kind='scatter', filename=graph_folder + '/' + graph_name + ' WAU_YAU')
+
             if data_use is None:
                 multiple_things = input('\nWould you like to do anything else with the data?\n'
                                         'Y = 1/N = 2:')

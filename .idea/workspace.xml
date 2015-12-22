@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/app_analytics.py" line="56" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="df427cee-adcd-4bee-8e53-ea205f6d80e2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DAU.pickle" afterPath="$PROJECT_DIR$/DAU.pickle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_analytics.py" afterPath="$PROJECT_DIR$/app_analytics.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/total_app_opened.py" afterPath="$PROJECT_DIR$/total_app_opened.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/end_use.py" afterPath="$PROJECT_DIR$/end_use.py" />
     </list>
     <ignored path="Enhatch_App_Analytics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +31,11 @@
       <file leaf-file-name="app_analytics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10885806">
-              <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
+            <state vertical-scroll-proportion="1.6839081">
+              <caret line="312" column="51" selection-start-line="312" selection-start-column="51" selection-end-line="312" selection-end-column="51" />
               <folding>
-                <element signature="e#1679#6280#0" expanded="false" />
+                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#7981#12792#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -52,11 +55,11 @@
         <entry file="file://$PROJECT_DIR$/daily_pull.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+              <caret line="108" column="56" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
               <folding>
+                <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#226#4072#0" expanded="false" />
                 <element signature="e#4181#4580#0" expanded="false" />
-                <element signature="e#4708#7785#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -66,12 +69,11 @@
         <entry file="file://$PROJECT_DIR$/weekly_monthly_yearly.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="93" column="56" selection-start-line="93" selection-start-column="56" selection-end-line="93" selection-end-column="56" />
               <folding>
                 <element signature="e#196#447#0" expanded="false" />
                 <element signature="e#546#802#0" expanded="false" />
                 <element signature="e#900#1153#0" expanded="false" />
-                <element signature="e#1310#5911#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,15 +89,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="cohort_analytics.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cohort_analytics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="56" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="end_use.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/end_use.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="369" column="0" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
-              <folding>
-                <element signature="e#271#2347#0" expanded="false" />
-                <element signature="e#2474#18049#0" expanded="false" />
-              </folding>
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,11 +127,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/weekly_monthly_yearly.py" />
-        <option value="$PROJECT_DIR$/daily_pull.py" />
-        <option value="$PROJECT_DIR$/end_use.py" />
         <option value="$PROJECT_DIR$/client_and_app_keys.py" />
-        <option value="$PROJECT_DIR$/app_analytics.py" />
         <option value="$PROJECT_DIR$/total_app_opened.py" />
+        <option value="$PROJECT_DIR$/daily_pull.py" />
+        <option value="$PROJECT_DIR$/../Enhatch_Cohort_Analysis/cohort_analytics.py" />
+        <option value="$PROJECT_DIR$/cohort_pull.py" />
+        <option value="$PROJECT_DIR$/testing_Stuff.py" />
+        <option value="$PROJECT_DIR$/app_analytics.py" />
+        <option value="$PROJECT_DIR$/end_use.py" />
+        <option value="$PROJECT_DIR$/cohort_analytics.py" />
       </list>
     </option>
   </component>
@@ -155,8 +170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -177,12 +190,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../App_Analytics" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.total_app_opened">
+  <component name="RunManager" selected="Python.cohort_analytics">
     <configuration default="false" name="app_analytics" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -200,7 +215,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="total_app_opened" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="daily_pull" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -212,7 +227,58 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Enhatch_App_Analytics" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/total_app_opened.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/daily_pull.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="end_use" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Enhatch_App_Analytics" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/end_use.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testing_Stuff" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Enhatch_App_Analytics" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing_Stuff.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="cohort_analytics" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Enhatch_App_Analytics" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cohort_analytics.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -339,14 +405,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.app_analytics" />
-      <item index="1" class="java.lang.String" itemvalue="Python.total_app_opened" />
+      <item index="1" class="java.lang.String" itemvalue="Python.daily_pull" />
+      <item index="2" class="java.lang.String" itemvalue="Python.end_use" />
+      <item index="3" class="java.lang.String" itemvalue="Python.testing_Stuff" />
+      <item index="4" class="java.lang.String" itemvalue="Python.cohort_analytics" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.total_app_opened" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.cohort_analytics" />
         <item index="1" class="java.lang.String" itemvalue="Python.app_analytics" />
+        <item index="2" class="java.lang.String" itemvalue="Python.testing_Stuff" />
+        <item index="3" class="java.lang.String" itemvalue="Python.end_use" />
+        <item index="4" class="java.lang.String" itemvalue="Python.daily_pull" />
       </list>
     </recent_temporary>
   </component>
@@ -367,23 +439,23 @@
     <frame x="-8" y="-1088" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07323498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08061117" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24974093" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36062175" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36099586" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -402,7 +474,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="56" />
+      <option name="time" value="64" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -411,32 +483,14 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app_analytics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-          <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client_and_app_keys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/daily_pull.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
+            <element signature="e#0#19#0" expanded="true" />
             <element signature="e#226#4072#0" expanded="false" />
             <element signature="e#4181#4580#0" expanded="false" />
-            <element signature="e#4708#7785#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -449,7 +503,6 @@
             <element signature="e#196#447#0" expanded="false" />
             <element signature="e#546#802#0" expanded="false" />
             <element signature="e#900#1153#0" expanded="false" />
-            <element signature="e#1310#5911#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -466,9 +519,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="369" column="0" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_analytics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#271#2347#0" expanded="false" />
-            <element signature="e#2474#18049#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -478,7 +539,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -488,7 +550,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -498,7 +561,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -508,7 +572,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -518,7 +583,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -528,7 +594,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -538,7 +605,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -548,7 +616,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -558,7 +627,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -568,7 +638,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -578,17 +649,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_analytics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -598,7 +660,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -643,7 +706,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -781,14 +845,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daily_pull.py">
+    <entry file="file://$PROJECT_DIR$/../Enhatch_Cohort_Analysis/cohort_analytics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14655173">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cohort_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <caret line="84" column="56" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
           <folding>
-            <element signature="e#226#4072#0" expanded="false" />
-            <element signature="e#4181#4580#0" expanded="false" />
-            <element signature="e#4708#7785#0" expanded="false" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,31 +868,7 @@
     <entry file="file://$PROJECT_DIR$/end_use.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="369" column="0" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
-          <folding>
-            <element signature="e#271#2347#0" expanded="false" />
-            <element signature="e#2474#18049#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weekly_monthly_yearly.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#196#447#0" expanded="false" />
-            <element signature="e#546#802#0" expanded="false" />
-            <element signature="e#900#1153#0" expanded="false" />
-            <element signature="e#1310#5911#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client_and_app_keys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -833,12 +881,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/weekly_monthly_yearly.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="56" selection-start-line="93" selection-start-column="56" selection-end-line="93" selection-end-column="56" />
+          <folding>
+            <element signature="e#196#447#0" expanded="false" />
+            <element signature="e#546#802#0" expanded="false" />
+            <element signature="e#900#1153#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daily_pull.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="56" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#226#4072#0" expanded="false" />
+            <element signature="e#4181#4580#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client_and_app_keys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10885806">
-          <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
+        <state vertical-scroll-proportion="1.6839081">
+          <caret line="312" column="51" selection-start-line="312" selection-start-column="51" selection-end-line="312" selection-end-column="51" />
           <folding>
-            <element signature="e#1679#6280#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7981#12792#0" expanded="false" />
           </folding>
         </state>
       </provider>
