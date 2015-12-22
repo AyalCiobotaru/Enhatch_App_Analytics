@@ -45,8 +45,7 @@ def user_wants():
     x = 1
     while x == 1:
         if decision1 == "7":
-            cohort_file = input("\nDoes the raw data for a cohert analysis exist in this directory:\n" +
-                                str(sys.path[1]) + "?\n"
+            cohort_file = input("\nDoes the raw data for a cohert analysis exist in the working directory?\n"
                                 "Y = 1/ N = 2:")
             if cohort_file == "1":
                 try:

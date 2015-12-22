@@ -75,6 +75,7 @@ def python_graph(pull_type):
 # Function to acquire what the user wants to do with the new data acquired
 def data_end_use(pull_type, data_use, account):
     if data_use is None:
+        print()
         if pull_type == '1':
             print('Handling DAU\n'
                   '____________________')
