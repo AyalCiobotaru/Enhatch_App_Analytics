@@ -5,7 +5,6 @@ from weekly_monthly_yearly import app_data_weekly_monthly_yearly
 from end_use import data_end_use, python_graph
 from total_app_opened import app_opened
 from cohort_analytics import cohort_analysis, cohort_pull
-import sys
 
 
 # Function to acuire what the user wants to do

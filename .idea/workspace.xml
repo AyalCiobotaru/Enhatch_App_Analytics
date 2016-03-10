@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app_analytics.py" line="55" />
+    <bookmark url="file://$PROJECT_DIR$/app_analytics.py" line="54" />
+    <bookmark url="file://$PROJECT_DIR$/app_analytics.py" line="22" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df427cee-adcd-4bee-8e53-ea205f6d80e2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_retention.pickle" afterPath="$PROJECT_DIR$/user_retention.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cohort_analytics.py" afterPath="$PROJECT_DIR$/cohort_analytics.py" />
-    </list>
+    <list default="true" id="df427cee-adcd-4bee-8e53-ea205f6d80e2" name="Default" comment="" />
     <ignored path="Enhatch_App_Analytics.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,16 +25,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app_analytics.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app_analytics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.46264368">
+              <caret line="297" column="76" selection-start-line="297" selection-start-column="76" selection-end-line="297" selection-end-column="76" />
               <folding>
-                <element signature="e#401#2667#0" expanded="false" />
-                <element signature="e#2777#7775#0" expanded="false" />
-                <element signature="e#7929#12740#0" expanded="false" />
-                <element signature="e#12893#16540#0" expanded="false" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,12 +51,8 @@
         <entry file="file://$PROJECT_DIR$/daily_pull.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="67" selection-start-line="98" selection-start-column="67" selection-end-line="98" selection-end-column="67" />
-              <folding>
-                <element signature="e#226#4072#0" expanded="false" />
-                <element signature="e#4181#4580#0" expanded="false" />
-                <element signature="e#4708#7785#0" expanded="false" />
-              </folding>
+              <caret line="94" column="14" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -70,13 +61,8 @@
         <entry file="file://$PROJECT_DIR$/weekly_monthly_yearly.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="91" selection-start-line="30" selection-start-column="91" selection-end-line="30" selection-end-column="91" />
-              <folding>
-                <element signature="e#196#447#0" expanded="false" />
-                <element signature="e#546#802#0" expanded="false" />
-                <element signature="e#900#1153#0" expanded="false" />
-                <element signature="e#1310#5911#0" expanded="false" />
-              </folding>
+              <caret line="125" column="18" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,34 +71,17 @@
         <entry file="file://$PROJECT_DIR$/total_app_opened.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="e#119#941#0" expanded="false" />
-              </folding>
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cohort_analytics.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cohort_analytics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cohort_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31748727">
-              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-              <folding>
-                <element signature="e#319#507#0" expanded="false" />
-                <element signature="e#570#1306#0" expanded="false" />
-                <element signature="e#1344#3565#0" expanded="false" />
-                <element signature="e#3596#3985#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="api.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Anaconda3/Lib/site-packages/keen/api.py">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+              <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -122,10 +91,10 @@
         <entry file="file://$PROJECT_DIR$/end_use.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
+                <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#271#2347#0" expanded="false" />
-                <element signature="e#2474#19742#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -148,14 +117,15 @@
       <list>
         <option value="$PROJECT_DIR$/weekly_monthly_yearly.py" />
         <option value="$PROJECT_DIR$/client_and_app_keys.py" />
-        <option value="$PROJECT_DIR$/total_app_opened.py" />
-        <option value="$PROJECT_DIR$/daily_pull.py" />
         <option value="$PROJECT_DIR$/../Enhatch_Cohort_Analysis/cohort_analytics.py" />
         <option value="$PROJECT_DIR$/cohort_pull.py" />
         <option value="$PROJECT_DIR$/testing_Stuff.py" />
         <option value="$PROJECT_DIR$/end_use.py" />
-        <option value="$PROJECT_DIR$/app_analytics.py" />
         <option value="$PROJECT_DIR$/cohort_analytics.py" />
+        <option value="$PROJECT_DIR$/../../Chess/Chess.py" />
+        <option value="$PROJECT_DIR$/daily_pull.py" />
+        <option value="$PROJECT_DIR$/total_app_opened.py" />
+        <option value="$PROJECT_DIR$/app_analytics.py" />
       </list>
     </option>
   </component>
@@ -215,9 +185,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/git-cmd.exe" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.cohort_analytics">
+  <component name="RunManager" selected="Python.app_analytics">
     <configuration default="false" name="app_analytics" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -231,40 +203,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Enhatch_App_Analytics" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app_analytics.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="daily_pull" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Enhatch_App_Analytics" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/daily_pull.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="end_use" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Enhatch_App_Analytics" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/end_use.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -299,6 +237,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Enhatch_App_Analytics" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cohort_analytics.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Chess" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../Chess" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Enhatch_App_Analytics" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../Chess/Chess.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="total_app_opened" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Enhatch_App_Analytics" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/total_app_opened.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -427,18 +399,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.app_analytics" />
-      <item index="1" class="java.lang.String" itemvalue="Python.daily_pull" />
-      <item index="2" class="java.lang.String" itemvalue="Python.end_use" />
-      <item index="3" class="java.lang.String" itemvalue="Python.testing_Stuff" />
-      <item index="4" class="java.lang.String" itemvalue="Python.cohort_analytics" />
+      <item index="1" class="java.lang.String" itemvalue="Python.testing_Stuff" />
+      <item index="2" class="java.lang.String" itemvalue="Python.cohort_analytics" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Chess" />
+      <item index="4" class="java.lang.String" itemvalue="Python.total_app_opened" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.cohort_analytics" />
-        <item index="1" class="java.lang.String" itemvalue="Python.app_analytics" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testing_Stuff" />
-        <item index="3" class="java.lang.String" itemvalue="Python.end_use" />
-        <item index="4" class="java.lang.String" itemvalue="Python.daily_pull" />
+        <item index="0" class="java.lang.String" itemvalue="Python.app_analytics" />
+        <item index="1" class="java.lang.String" itemvalue="Python.total_app_opened" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Chess" />
+        <item index="3" class="java.lang.String" itemvalue="Python.cohort_analytics" />
+        <item index="4" class="java.lang.String" itemvalue="Python.testing_Stuff" />
       </list>
     </recent_temporary>
   </component>
@@ -456,19 +428,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1874" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.083333336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14869282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24974093" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24818276" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36062175" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36033228" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -494,7 +466,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="66" />
+      <option name="time" value="69" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -503,28 +475,11 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/daily_pull.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding>
-            <element signature="e#226#4072#0" expanded="false" />
-            <element signature="e#4181#4580#0" expanded="false" />
-            <element signature="e#4708#7785#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weekly_monthly_yearly.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#196#447#0" expanded="false" />
-            <element signature="e#546#802#0" expanded="false" />
-            <element signature="e#900#1153#0" expanded="false" />
-            <element signature="e#1310#5911#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -532,9 +487,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#119#941#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -543,8 +496,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="369" column="0" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
           <folding>
+            <element signature="e#0#19#0" expanded="true" />
             <element signature="e#271#2347#0" expanded="false" />
-            <element signature="e#2474#19742#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -554,10 +507,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -567,10 +517,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -580,10 +527,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -593,10 +537,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -606,10 +547,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -619,10 +557,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -632,10 +567,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -645,10 +577,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -658,10 +587,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -671,10 +597,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -684,10 +607,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -697,10 +617,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -710,10 +627,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -758,10 +672,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -857,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/pandas/core/frame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5130" column="0" selection-start-line="5130" selection-start-column="0" selection-end-line="5130" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/pandas/core/ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -896,9 +800,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14655173">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Enhatch_Cohort_Analysis/cohort_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.073275864">
+          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/keen/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.0458913">
+          <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Chess/Chess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68390805">
+          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -910,92 +832,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2816092">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/daily_pull.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="67" selection-start-line="98" selection-start-column="67" selection-end-line="98" selection-end-column="67" />
-          <folding>
-            <element signature="e#226#4072#0" expanded="false" />
-            <element signature="e#4181#4580#0" expanded="false" />
-            <element signature="e#4708#7785#0" expanded="false" />
-          </folding>
+          <caret line="94" column="14" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/weekly_monthly_yearly.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="91" selection-start-line="30" selection-start-column="91" selection-end-line="30" selection-end-column="91" />
-          <folding>
-            <element signature="e#196#447#0" expanded="false" />
-            <element signature="e#546#802#0" expanded="false" />
-            <element signature="e#900#1153#0" expanded="false" />
-            <element signature="e#1310#5911#0" expanded="false" />
-          </folding>
+          <caret line="125" column="18" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/total_app_opened.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#119#941#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/end_use.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
-          <folding>
-            <element signature="e#271#2347#0" expanded="false" />
-            <element signature="e#2474#19742#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_analytics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
-          <folding>
-            <element signature="e#401#2667#0" expanded="false" />
-            <element signature="e#2777#7775#0" expanded="false" />
-            <element signature="e#7929#12740#0" expanded="false" />
-            <element signature="e#12893#16540#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Enhatch_Cohort_Analysis/cohort_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.073275864">
-          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/keen/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cohort_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31748727">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/end_use.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#319#507#0" expanded="false" />
-            <element signature="e#570#1306#0" expanded="false" />
-            <element signature="e#1344#3565#0" expanded="false" />
-            <element signature="e#3596#3985#0" expanded="false" />
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#271#2347#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_analytics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46264368">
+          <caret line="297" column="76" selection-start-line="297" selection-start-column="76" selection-end-line="297" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
